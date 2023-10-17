@@ -1,17 +1,16 @@
 import { EditorPosition, KeymapContext, MarkdownView, Plugin, TFile, } from "obsidian";
 import SnippetManager from "./snippet_manager";
 import SuggestionPopup, { SelectionDirection } from "./popup";
-import { CompletrSettings, DEFAULT_SETTINGS } from "./settings";
-import CompletrSettingsTab from "./settings_tab";
+import { ToDoMDSettings, DEFAULT_SETTINGS } from "./settings";
+import ToDoMDSettingsTab from "./settings_tab";
 import { EditorView, ViewUpdate } from "@codemirror/view";
 import { editorToCodeMirrorState, posFromIndex } from "./editor_helpers";
 import { markerStateField } from "./marker_state_field";
 import { ToDo } from "./provider/todo_provider";
-import { SuggestionBlacklist } from "./provider/blacklist";
 
-export default class CompletrPlugin extends Plugin {
+export default class ToDoMDPlugin extends Plugin {
 
-    settings: CompletrSettings;
+    settings: ToDoMDSettings;
 
     private snippetManager: SnippetManager;
     private _suggestionPopup: SuggestionPopup;
@@ -25,18 +24,16 @@ export default class CompletrPlugin extends Plugin {
         this.registerEditorSuggest(this._suggestionPopup);
 
         this.registerEvent(this.app.workspace.on('file-open', this.onFileOpened, this));
-        //this.registerEvent(this.app.metadataCache.on('changed', FrontMatter.onCacheChange, FrontMatter));
-        //this.app.workspace.onLayoutReady(() => FrontMatter.loadYAMLKeyCompletions(this.app.metadataCache, this.app.vault.getMarkdownFiles()));
 
         this.registerEditorExtension(markerStateField);
         this.registerEditorExtension(EditorView.updateListener.of(new CursorActivityListener(this.snippetManager, this._suggestionPopup).listener));
 
-        this.addSettingTab(new CompletrSettingsTab(this.app, this));
+        this.addSettingTab(new ToDoMDSettingsTab(this.app, this));
 
         this.setupCommands();
 
         if ((this.app.vault as any).config?.legacyEditor) {
-            console.log("Completr: Without Live Preview enabled, most features of Completr will not work properly!");
+            console.log("ToDoMD: Without Live Preview enabled, most features of ToDoMD will not work properly!");
         }
     }
 
@@ -48,7 +45,7 @@ export default class CompletrPlugin extends Plugin {
 
         const isHotkeyMatch = (hotkey: any, context: KeymapContext, isBypassCommand: boolean): boolean => {
             //Copied from original isMatch function, modified to not require exactly the same modifiers for
-            // completr-bypass commands. This allows triggering for example Ctrl+Enter even when
+            // ToDoMD-bypass commands. This allows triggering for example Ctrl+Enter even when
             // pressing Ctrl+Shift+Enter. The additional modifier is then passed to the editor.
 
             /* Original isMatch function:
@@ -100,7 +97,7 @@ export default class CompletrPlugin extends Plugin {
         });
 
         this.addCommand({
-            id: 'completr-open-suggestion-popup',
+            id: 'ToDoMD-open-suggestion-popup',
             name: 'Open suggestion popup',
             hotkeys: [
                 {
@@ -116,7 +113,7 @@ export default class CompletrPlugin extends Plugin {
             isVisible: () => !this._suggestionPopup.isVisible()
         });
         this.addCommand({
-            id: 'completr-select-next-suggestion',
+            id: 'ToDoMD-select-next-suggestion',
             name: 'Select next suggestion',
             hotkeys: [
                 {
@@ -132,7 +129,7 @@ export default class CompletrPlugin extends Plugin {
             isVisible: () => this._suggestionPopup.isVisible(),
         });
         this.addCommand({
-            id: 'completr-select-previous-suggestion',
+            id: 'ToDoMD-select-previous-suggestion',
             name: 'Select previous suggestion',
             hotkeys: [
                 {
@@ -148,7 +145,7 @@ export default class CompletrPlugin extends Plugin {
             isVisible: () => this._suggestionPopup.isVisible(),
         });
         this.addCommand({
-            id: 'completr-insert-selected-suggestion',
+            id: 'ToDoMD-insert-selected-suggestion',
             name: 'Insert selected suggestion',
             hotkeys: [
                 {
@@ -162,7 +159,7 @@ export default class CompletrPlugin extends Plugin {
             isVisible: () => this._suggestionPopup.isVisible(),
         });
         this.addCommand({
-            id: 'completr-bypass-enter-key',
+            id: 'ToDoMD-bypass-enter-key',
             name: 'Bypass the popup and press Enter',
             hotkeys: [
                 {
@@ -177,7 +174,7 @@ export default class CompletrPlugin extends Plugin {
             isVisible: () => this._suggestionPopup.isVisible(),
         });
         this.addCommand({
-            id: 'completr-bypass-tab-key',
+            id: 'ToDoMD-bypass-tab-key',
             name: 'Bypass the popup and press Tab',
             hotkeys: [
                 {
@@ -192,25 +189,7 @@ export default class CompletrPlugin extends Plugin {
             isVisible: () => this._suggestionPopup.isVisible(),
         });
         this.addCommand({
-            id: 'completr-blacklist-current-word',
-            name: 'Add the currently selected word to the blacklist',
-            hotkeys: [
-                {
-                    key: "D",
-                    modifiers: ["Shift"]
-                }
-            ],
-            editorCallback: (editor) => {
-                SuggestionBlacklist.add(this._suggestionPopup.getSelectedItem());
-                SuggestionBlacklist.saveData(this.app.vault);
-                (this._suggestionPopup as any).trigger(editor, this.app.workspace.getActiveFile(), true);
-            },
-            // @ts-ignore
-            isBypassCommand: () => !this._suggestionPopup.isFocused(),
-            isVisible: () => this._suggestionPopup.isVisible(),
-        });
-        this.addCommand({
-            id: 'completr-close-suggestion-popup',
+            id: 'ToDoMD-close-suggestion-popup',
             name: 'Close suggestion popup',
             hotkeys: [
                 {
@@ -223,7 +202,7 @@ export default class CompletrPlugin extends Plugin {
             isVisible: () => this._suggestionPopup.isVisible(),
         });
         this.addCommand({
-            id: 'completr-jump-to-next-snippet-placeholder',
+            id: 'ToDoMD-jump-to-next-snippet-placeholder',
             name: 'Jump to next snippet placeholder',
             hotkeys: [
                 {
@@ -265,7 +244,7 @@ export default class CompletrPlugin extends Plugin {
         //   event to the editor if the isBypassCommand function returns true.
         // - All of this restores the default behavior for all keys while the suggestion popup is open, but not focused.
         this.addCommand({
-            id: 'completr-fake-tab',
+            id: 'ToDoMD-fake-tab',
             name: '(internal)',
             hotkeys: [
                 {
@@ -280,7 +259,7 @@ export default class CompletrPlugin extends Plugin {
             isVisible: () => this._suggestionPopup.isVisible(),
         });
         this.addCommand({
-            id: 'completr-fake-enter',
+            id: 'ToDoMD-fake-enter',
             name: '(internal)',
             hotkeys: [
                 {
@@ -295,7 +274,7 @@ export default class CompletrPlugin extends Plugin {
             isVisible: () => this._suggestionPopup.isVisible(),
         });
         this.addCommand({
-            id: 'completr-fake-arrow-up',
+            id: 'ToDoMD-fake-arrow-up',
             name: '(internal)',
             hotkeys: [
                 {
@@ -310,7 +289,7 @@ export default class CompletrPlugin extends Plugin {
             isVisible: () => this._suggestionPopup.isVisible(),
         });
         this.addCommand({
-            id: 'completr-fake-arrow-down',
+            id: 'ToDoMD-fake-arrow-down',
             name: '(internal)',
             hotkeys: [
                 {
@@ -331,11 +310,8 @@ export default class CompletrPlugin extends Plugin {
     }
 
     async loadSettings() {
-        this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
-
-        SuggestionBlacklist.loadData(this.app.vault).then(() => {
-            ToDo.loadToDoFields(this.app.vault);
-        });
+        this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());  
+        ToDo.loadToDoFields(this.app.vault);
     }
 
     get suggestionPopup() {

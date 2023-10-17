@@ -1,14 +1,14 @@
 import { App, ButtonComponent, Modal, PluginSettingTab, Setting } from "obsidian";
-import CompletrPlugin from "./main";
+import ToDoMDPlugin from "./main";
 import { ToDo } from "./provider/todo_provider";
-import { CalloutProviderSource, CompletrSettings} from "./settings";
+import { CalloutProviderSource, ToDoMDSettings} from "./settings";
 
-export default class CompletrSettingsTab extends PluginSettingTab {
+export default class ToDoMDSettingsTab extends PluginSettingTab {
 
-    private plugin: CompletrPlugin;
+    private plugin: ToDoMDPlugin;
     private isReloadingWords: boolean;
 
-    constructor(app: App, plugin: CompletrPlugin) {
+    constructor(app: App, plugin: ToDoMDPlugin) {
         super(app, plugin);
         this.plugin = plugin;
     }
@@ -47,7 +47,7 @@ export default class CompletrSettingsTab extends PluginSettingTab {
 
     }
 
-    private createEnabledSetting(propertyName: keyof CompletrSettings, desc: string, container: HTMLElement) {
+    private createEnabledSetting(propertyName: keyof ToDoMDSettings, desc: string, container: HTMLElement) {
         new Setting(container)
             .setName("Enabled")
             .setDesc(desc)
@@ -78,6 +78,6 @@ class ConfirmationModal extends Modal {
             })
             .addButton(button => button
                 .setButtonText("Cancel")
-                .onClick(() => this.close())).settingEl.addClass("completr-settings-no-border");
+                .onClick(() => this.close())).settingEl.addClass("ToDoMD-settings-no-border");
     }
 }

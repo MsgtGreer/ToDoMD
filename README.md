@@ -1,58 +1,24 @@
-# Completr
-
-[![](https://img.shields.io/github/v/release/tth05/obsidian-completr?style=flat-square)](https://github.com/tth05/obsidian-completr/releases)
-![](https://img.shields.io/github/downloads/tth05/obsidian-completr/total?style=flat-square)
+# ToDoMD
 
 This plugin provides advanced auto-completion functionality for obsidian. Legacy editor not supported.
 
 ## Features
 
-- Latex support
-    - No need to start with a `\`
-    - Includes all MathJax commands
-    - Allows `\begin...` completion for all environments
-    - Support for inserting snippets with placeholders
-- YAML Front Matter support
-    - Learns any key with any value and provides completions for them
-- Word list support
-    - Load files where each line is a word
-    - Performant, even with very big [lists](#looking-for-word-lists)
-- Scanning your vault for words
-    - Scans the current file or your whole vault to find new words which can then be suggested
+- [x] ?ToDoMD auto completion
+- [ ] ?ToDoMD query feature
+- [ ] ?ToDoMD in editor styling
 
 ## Installation
 
 ### Community plugin list
-
-Browse the community plugins list and search for `Completr`.
-
-### Manually
-
-- Download `main.js, styles.css` and `manifest.json` from a release of your choice
-- Copy the three files to your vault `VaultFolder/.obsidian/plugins/obsidian-completr/`
+To be released.
+After release, browse the community plugins list and search for `ToDoMD`.
 
 ### After installation
 
 1. Restart obsidian to ensure internal hooks can get registered properly
-2. Check out the [hotkeys](#hotkeys) section to further configure the plugin
 
 ## Configuration
-
-### Blacklist
-
-- You can blacklist any suggestion by adding it to the `.obsidian/plugins/obsidian-completr/blacklisted_suggestions.txt`
-  file
-- Alternatively, you can use the hotkey to blacklist the currently selected suggestion (Default `Shift+D`)
-
-### LaTeX commands
-
-- All default LaTeX commands can be found in the `.obsidian/plugins/obsidian-completr/latex_commands.json` file
-- You can add, remove or modify commands by editing this file
-- Replacement syntax
-    - `#` is a placeholder for snippets
-    - `~` marks the cursor position to jump to. This cannot be on the same line as a placeholder
-    - `\n` is a newline
-- If the file contains incorrect syntax, a notice will pop up and the console will contain a more detailed error message
 
 ### Hotkeys
 
@@ -70,27 +36,6 @@ Browse the community plugins list and search for `Completr`.
   currently does not support this.
 
 ## Example usage
-
-#### Latex snippets
-
-![Latex](https://user-images.githubusercontent.com/36999320/146680089-57390cd7-e3c3-418c-9c55-9536259bb956.gif)
-
-#### YAML Front Matter
-
-![Front matter](https://user-images.githubusercontent.com/36999320/148700639-6cb48631-0b2f-45b8-b48a-40357425e8bf.gif)
-
-#### File scanning
-
-![File scanner](https://user-images.githubusercontent.com/36999320/146680134-33d8393b-956a-4028-ab2f-62526f76984d.gif)
-
-#### Two million german words loaded
-
-![Word list](https://user-images.githubusercontent.com/36999320/146680359-ae572473-8919-4927-a6f5-bc39800a5c23.gif)
-
-## Looking for word lists?
-
-- https://sourceforge.net/projects/germandict/
-- https://github.com/kpym/FrequencyDictionaries
 
 ## Development
 

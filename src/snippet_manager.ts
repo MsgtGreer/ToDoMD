@@ -54,7 +54,7 @@ export default class SnippetManager {
         }
 
         if (colorIndex === COLORS.length) {
-            console.log("Completr: No colors left for snippet, using random color");
+            console.log("ToDoMD: No colors left for snippet, using random color");
             colorIndex = Math.floor(Math.random() * COLORS.length);
         }
 
@@ -84,7 +84,7 @@ export default class SnippetManager {
                     inclusive: true,
                     attributes: {
                         style: "border-width: 1px 0 1px 0;border-style: solid;",
-                        class: "completr-suggestion-placeholder" + colorIndex
+                        class: "ToDoMD-suggestion-placeholder" + colorIndex
                     },
                     reference: reference
                 }).range(

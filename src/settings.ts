@@ -7,11 +7,11 @@ export const enum WordInsertionMode {
 }
 
 export const enum CalloutProviderSource {
-    COMPLETR = "Completr",
+    ToDoMD = "ToDoMD",
     CALLOUT_MANAGER = "Callout Manager",
 }
 
-export interface CompletrSettings {
+export interface ToDoMDSettings {
     characterRegex: string,
     maxLookBackDistance: number,
     autoFocus: boolean,
@@ -35,7 +35,7 @@ export interface CompletrSettings {
     calloutProviderSource: CalloutProviderSource,
 }
 
-export const DEFAULT_SETTINGS: CompletrSettings = {
+export const DEFAULT_SETTINGS: ToDoMDSettings = {
     characterRegex: "a-zA-ZöäüÖÄÜß",
     maxLookBackDistance: 50,
     autoFocus: true,
@@ -56,9 +56,9 @@ export const DEFAULT_SETTINGS: CompletrSettings = {
     frontMatterTagAppendSuffix: true,
     frontMatterIgnoreCase: true,
     calloutProviderEnabled: true,
-    calloutProviderSource: CalloutProviderSource.COMPLETR,
+    calloutProviderSource: CalloutProviderSource.ToDoMD,
 }
 
-export function intoCompletrPath(vault: Vault, ...path: string[]): string {
-    return vault.configDir + "/plugins/obsidian-completr/" + path.join("/");
+export function intoToDoMDPath(vault: Vault, ...path: string[]): string {
+    return vault.configDir + "/plugins/obsidian-ToDoMD/" + path.join("/");
 }

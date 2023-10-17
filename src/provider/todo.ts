@@ -2,7 +2,7 @@ export default class ToDoMD {
     private status;
     private contributor = new todoAttribute("+","","Add a responsible person to the task");
     private name = new todoAttribute("?","", "Give this ToDo a name, you can even give a link to a note.");
-    private description = new todoAttribute("%","", "Give this ToDo a name, you can even give a link to a note.");
+    private description = new todoAttribute("%","", "Give this ToDo a description.");
     private parent = new todoAttribute("^","", "Link a parent todo, that might have created this todo.")
     private context = new todoAttribute("@","", "Add a context tag.")
     private tag = new todoAttribute("#","", "Add a tag to the note, to link it  to a project.");
@@ -21,7 +21,7 @@ export default class ToDoMD {
     constructor(toDoLine: string = "") {
         if (toDoLine)
             this.parseToDo(toDoLine)
-        
+
     }
 
     missingToDoAttributeKeys(): string[]{

@@ -1,7 +1,6 @@
 import { Suggestion, SuggestionContext, SuggestionProvider } from "./provider";
-import { CompletrSettings, intoCompletrPath } from "../settings";
+import { ToDoMDSettings as ToDoMDSettings, intoToDoMDPath } from "../settings";
 import { Notice, Vault } from "obsidian";
-import { SuggestionBlacklist } from "./blacklist";
 import ToDoMD from "./todo"
 
 function substringUntil(str: string, delimiter: string): string {
@@ -16,7 +15,7 @@ class ToDoSuggestionProvider implements SuggestionProvider {
 
     private loadedCommands: Suggestion[] = [];
     // this one provides suggestion and applies context filters. It serves as the interface.
-    getSuggestions(context: SuggestionContext, settings: CompletrSettings): Suggestion[] {
+    getSuggestions(context: SuggestionContext, settings: ToDoMDSettings): Suggestion[] {
         //console.log("Requesting ToDo Suggestions")
         if (!settings.ToDoProviderEnabled || !context.query)
             return [];
@@ -46,7 +45,7 @@ class ToDoSuggestionProvider implements SuggestionProvider {
     //this one loads the commands that are applicable in context
     async loadToDoFields(vault: Vault) {
         //console.log("Loading ToDoFiels...")
-        const path = intoCompletrPath(vault, TODO_ATTRIBUTES_PATH);
+        const path = intoToDoMDPath(vault, TODO_ATTRIBUTES_PATH);
         if (!(await vault.adapter.exists(path))) {
             const defaultCommands = generateDefaultToDoSuggestions();
             await vault.adapter.write(path, JSON.stringify(defaultCommands, null, 2));
@@ -65,13 +64,11 @@ class ToDoSuggestionProvider implements SuggestionProvider {
 
                 this.loadedCommands = commands;
             } catch (e) {
-                console.log("Completr ToDo attributes can't parse error:", e.message);
+                console.log("ToDo attributes can't parse error:", e.message);
                 new Notice("Failed to parse ToDo attributes file " + path + ". Using default commands.", 3000);
                 this.loadedCommands = generateDefaultToDoSuggestions();
             }
         }
-
-        this.loadedCommands = SuggestionBlacklist.filter(this.loadedCommands);
     }
 }
 

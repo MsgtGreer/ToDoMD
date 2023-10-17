@@ -11,9 +11,8 @@ import {
     TFile
 } from "obsidian";
 import SnippetManager from "./snippet_manager";
-import { CompletrSettings } from "./settings";
+import { ToDoMDSettings } from "./settings";
 import { matchWordBackwards } from "./editor_helpers";
-import { SuggestionBlacklist } from "./provider/blacklist";
 
 
 export default class SuggestionPopup extends EditorSuggest<Suggestion> {
@@ -28,10 +27,10 @@ export default class SuggestionPopup extends EditorSuggest<Suggestion> {
     private focused = false;
 
     private readonly snippetManager: SnippetManager;
-    private readonly settings: CompletrSettings;
+    private readonly settings: ToDoMDSettings;
     private readonly disableSnippets: boolean;
 
-    constructor(app: App, settings: CompletrSettings, snippetManager: SnippetManager) {
+    constructor(app: App, settings: ToDoMDSettings, snippetManager: SnippetManager) {
         super(app);
         this.disableSnippets = true;//(app.vault as any).config?.legacyEditor;
         this.settings = settings;
@@ -75,7 +74,7 @@ export default class SuggestionPopup extends EditorSuggest<Suggestion> {
             return true;
         });
         
-        return suggestions.length === 0 ? null : suggestions.filter(s => !SuggestionBlacklist.has(s));
+        return suggestions.length === 0 ? null : suggestions;
     }
 
     onTrigger(cursor: EditorPosition, editor: Editor, file: TFile): EditorSuggestTriggerInfo | null {
@@ -111,23 +110,23 @@ export default class SuggestionPopup extends EditorSuggest<Suggestion> {
     }
 
     renderSuggestion(value: Suggestion, el: HTMLElement): void {
-        el.addClass("completr-suggestion-item");
+        el.addClass("ToDoMD-suggestion-item");
         if (value.color != null) {
-            el.style.setProperty("--completr-suggestion-color", value.color);
+            el.style.setProperty("--ToDoMD-suggestion-color", value.color);
         }
 
         // Add the icon.
         if (value.icon != null) {
             const icon = getIcon(value.icon);
             if (icon != null) {
-                icon.addClass("completr-suggestion-icon");
+                icon.addClass("ToDoMD-suggestion-icon");
                 el.appendChild(icon);
             }
         }
 
         // Add the text.
         const text = el.doc.createElement("div");
-        text.addClass("completr-suggestion-text");
+        text.addClass("ToDoMD-suggestion-text");
         text.setText(value.displayName);
         el.appendChild(text);
     }
@@ -149,7 +148,7 @@ export default class SuggestionPopup extends EditorSuggest<Suggestion> {
             if (!this.disableSnippets) {
                 this.snippetManager.handleSnippet(replacement, start, this.context.editor);
             } else {
-                console.log("Completr: Please enable Live Preview mode to use snippets");
+                console.log("ToDoMD: Please enable Live Preview mode to use snippets");
             }
         } else {
             this.context.editor.setCursor({ ...start, ch: start.ch + replacement.length });
