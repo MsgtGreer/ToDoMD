@@ -31,8 +31,18 @@ export function matchWordBackwards(
     charPredicate: (char: string) => boolean,
     maxLookBackDistance: number = 50
 ): { query: string, separatorChar: string } {
-    let query = "", separatorChar = null;
 
+    let query = "", separatorChar = null;
+    const line = editor.getLine(cursor.line);
+    //console.log(line)
+    const taskRegex = /^\s*-\s\[[\s*x-]\]/;
+    if(taskRegex.test(line) && editor.getRange({ ...cursor, ch: cursor.ch-1 }, { ...cursor, ch: cursor.ch })===" "){
+        //new Notice('Found a task');
+        //console.log("Task Line found, current line: ",cursor.line," current cursorpos: ",cursor.ch, "Last sign was: ",editor.getRange({ ...cursor, ch: cursor.ch-1 }, { ...cursor, ch: cursor.ch }))
+        query = line;
+        separatorChar = " ";
+        return { query, separatorChar};
+    }    
     // Save some time for very long lines
     let lookBackEnd = Math.max(0, cursor.ch - maxLookBackDistance);
     // Find word in front of cursor
@@ -42,10 +52,8 @@ export function matchWordBackwards(
             separatorChar = prevChar;
             break;
         }
-
         query = prevChar + query;
     }
-
     return { query, separatorChar };
 }
 
@@ -118,42 +126,53 @@ export class BlockType {
 }
 
 export function getLatexBlockType(editor: Editor, cursorPos: EditorPosition, triggerInCodeBlocks: boolean): BlockType | null {
+    // get bounds of the yaml frontmatter.
     const frontMatterBounds = getFrontMatterBounds(editor) ?? { startLine: -1, endLine: -1 };
+    // for ? 
     const blockTypeStack: { type: BlockType, line: number }[] = [];
-
+    // from 0 or 5000 lines ago, until the current cursor position loop over the lines
     for (let lineIndex = Math.max(0, cursorPos.line - 5000); lineIndex <= cursorPos.line; lineIndex++) {
+        // if the line is part of the front-matter, ignore it.
         if (lineIndex >= frontMatterBounds.startLine && lineIndex <= frontMatterBounds.endLine)
             continue;
-
+        // if it is part of the body, get the actual line.
         const line = editor.getLine(lineIndex);
+        // loop over all the character in the line.
         for (let j = cursorPos.line == lineIndex ? cursorPos.ch - 1 : line.length - 1; j >= 0; j--) {
+            //get the current character
             const currentChar = line.charAt(j);
+            // it think this next part should check if we are in a single line block.
+            //? BlockType.SINGLE_TYPES is a list of BlockTypes, consisting of single code and single latex block.
+            // .fing looks for a blocktype where the constructor argument c (c is the block delimiter, eihter '`' or '$') is equal to the currentChar
             let matchingBlockType = BlockType.SINGLE_TYPES.find((b) => b.c.charAt(0) === currentChar);
+            //if no single block is found, or the line is a comment, continue
             if (!matchingBlockType || line.charAt(Math.max(0, j - 1)) === '\\')
                 continue;
-
+            // get the corresponding multi line name to the block type specifier found.
             const multiTypeLength = matchingBlockType.otherType.c.length;
+            // figure if we actually have a multiline type
             const isDouble = j + 1 >= multiTypeLength && substringMatches(line, matchingBlockType.otherType.c, j - multiTypeLength + 1);
             if (isDouble) {
                 j -= multiTypeLength - 1;
                 matchingBlockType = matchingBlockType.otherType;
             }
-
+            // now push the current block type on a stack of blocks found.
             blockTypeStack.push({ type: matchingBlockType, line: lineIndex });
         }
     }
-
+    //if no blocks found, return null
     if (blockTypeStack.length < 1)
         return null;
-
+    // now loop over all blocks found.
     let currentIndex = 0;
     while (true) {
+        // out of the block stack? retunr null
         if (currentIndex >= blockTypeStack.length)
             return null;
-
+        // find the corresponding end of the block delimiter
         const currentBlock = blockTypeStack[currentIndex];
         const otherBlockIndex = indexOf(blockTypeStack, ({ type }) => type === currentBlock.type, currentIndex + 1);
-
+        // if none can be found, this is the block we are currently in.
         if (otherBlockIndex === -1) {
             if (!triggerInCodeBlocks && currentBlock.type.isCodeBlock)
                 return null;

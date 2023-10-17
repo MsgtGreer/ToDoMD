@@ -11,6 +11,7 @@ import { markerStateField } from "./marker_state_field";
 import { FrontMatter } from "./provider/front_matter_provider";
 import { Latex } from "./provider/latex_provider";
 import { Callout } from "./provider/callout_provider";
+import { ToDo } from "./provider/todo_provider";
 import { SuggestionBlacklist } from "./provider/blacklist";
 
 export default class CompletrPlugin extends Plugin {
@@ -343,6 +344,7 @@ export default class CompletrPlugin extends Plugin {
             FileScanner.loadData(this.app.vault);
             Latex.loadCommands(this.app.vault);
             Callout.loadSuggestions(this.app.vault, this);
+            ToDo.loadToDoFields(this.app.vault, this);
         });
     }
 

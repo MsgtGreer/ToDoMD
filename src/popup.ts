@@ -2,6 +2,7 @@ import { Suggestion, SuggestionProvider } from "./provider/provider";
 import { Latex } from "./provider/latex_provider";
 import { WordList } from "./provider/word_list_provider";
 import { FileScanner } from "./provider/scanner_provider";
+import { ToDo } from "./provider/todo_provider";
 import {
     App,
     Editor,
@@ -19,7 +20,7 @@ import { matchWordBackwards } from "./editor_helpers";
 import { SuggestionBlacklist } from "./provider/blacklist";
 import { Callout } from "./provider/callout_provider";
 
-const PROVIDERS: SuggestionProvider[] = [FrontMatter, Callout, Latex, FileScanner, WordList];
+const PROVIDERS: SuggestionProvider[] = [FrontMatter, Callout, Latex, FileScanner, WordList, ToDo];
 
 export default class SuggestionPopup extends EditorSuggest<Suggestion> {
     /**
@@ -48,6 +49,7 @@ export default class SuggestionPopup extends EditorSuggest<Suggestion> {
     }
 
     open() {
+        console.log("Opening")
         super.open();
         this.focused = this.settings.autoFocus;
 
@@ -65,6 +67,7 @@ export default class SuggestionPopup extends EditorSuggest<Suggestion> {
     getSuggestions(
         context: EditorSuggestContext
     ): Suggestion[] | Promise<Suggestion[]> {
+        console.log("Get suggestions")
         let suggestions: Suggestion[] = [];
 
         for (let provider of PROVIDERS) {
@@ -74,6 +77,7 @@ export default class SuggestionPopup extends EditorSuggest<Suggestion> {
             }, this.settings)];
 
             if (provider.blocksAllOtherProviders && suggestions.length > 0) {
+                console.log("Blocking provider: ", provider)
                 suggestions.forEach((suggestion) => {
                     if (!suggestion.overrideStart)
                         return;
@@ -110,13 +114,14 @@ export default class SuggestionPopup extends EditorSuggest<Suggestion> {
             this.close();
             return null;
         }
-
+        // if this line is a task, return the trigger info:
+         
         let {
             query,
             separatorChar
         } = matchWordBackwards(editor, cursor, (char) => this.getCharacterRegex().test(char), this.settings.maxLookBackDistance);
         this.separatorChar = separatorChar;
-
+        //console.log("Ran matchWordBackwords, got: ", query);
         return {
             start: {
                 ...cursor,
@@ -151,8 +156,9 @@ export default class SuggestionPopup extends EditorSuggest<Suggestion> {
 
     selectSuggestion(value: Suggestion, evt: MouseEvent | KeyboardEvent): void {
         const replacement = value.replacement;
+        console.log(value.overrideStart)
         const start = typeof value !== "string" && value.overrideStart ? value.overrideStart : this.context.start;
-
+        
         const endPos = value.overrideEnd ?? this.context.end;
         this.context.editor.replaceRange(replacement, start, {
             ...endPos,

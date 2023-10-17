@@ -3,6 +3,7 @@ import {isInstalled as isCalloutManagerInstalled} from "obsidian-callout-manager
 import CompletrPlugin from "./main";
 import { FileScanner } from "./provider/scanner_provider";
 import { WordList } from "./provider/word_list_provider";
+import { ToDo } from "./provider/todo_provider";
 import { CalloutProviderSource, CompletrSettings, WordInsertionMode } from "./settings";
 import { TextDecoder } from "util";
 import { detect } from "jschardet";
@@ -158,7 +159,13 @@ export default class CompletrSettingsTab extends PluginSettingTab {
                         await this.plugin.saveSettings();
                     });
             });
+            
+        new Setting(containerEl)
+        .setName("ToDo provider")
+        .setHeading();
 
+        this.createEnabledSetting("ToDoProviderEnabled", "Whether or not the ToDo provider is enabled", containerEl);
+    
         new Setting(containerEl)
             .setName("Front matter provider")
             .addExtraButton(button => button

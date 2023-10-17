@@ -1,0 +1,30 @@
+[
+  {
+    "displayName": "+ - Add a responsible person to the task",
+    "replacement": "+"
+  },
+  {
+    "displayName": "? - Give this ToDo a name, you can even give a link to a note.",
+    "replacement": "?"
+  },
+  {
+    "displayName": "% - Give this ToDo a name, you can even give a link to a note.",
+    "replacement": "%"
+  },
+  {
+    "displayName": "^ - Link a parent todo, that might have created this todo.",
+    "replacement": "^"
+  },
+  {
+    "displayName": "@ - Add a context tag.",
+    "replacement": "@"
+  },
+  {
+    "displayName": "# - Add a tag to the note, to link it  to a project.",
+    "replacement": "#"
+  },
+  {
+    "displayName": ": - Add a due date",
+    "replacement": ":"
+  }
+]
