@@ -18,7 +18,11 @@ export default class ToDoMD {
     
     private keysList = this.attributesList.map(attribute => attribute.key);
 // Default constructor
-    constructor() {}
+    constructor(toDoLine: string = "") {
+        if (toDoLine)
+            this.parseToDo(toDoLine)
+        
+    }
 
     missingToDoAttributeKeys(): string[]{
         let listOfEmpty =  this.attributesList.filter(attr => attr.value === "");

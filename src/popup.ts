@@ -25,7 +25,7 @@ export default class SuggestionPopup extends EditorSuggest<Suggestion> {
 
     private characterRegex: string;
     private compiledCharacterRegex: RegExp;
-    private focused: boolean = false;
+    private focused = false;
 
     private readonly snippetManager: SnippetManager;
     private readonly settings: CompletrSettings;
@@ -33,7 +33,7 @@ export default class SuggestionPopup extends EditorSuggest<Suggestion> {
 
     constructor(app: App, settings: CompletrSettings, snippetManager: SnippetManager) {
         super(app);
-        this.disableSnippets = (app.vault as any).config?.legacyEditor;
+        this.disableSnippets = true;//(app.vault as any).config?.legacyEditor;
         this.settings = settings;
         this.snippetManager = snippetManager;
 
@@ -134,7 +134,7 @@ export default class SuggestionPopup extends EditorSuggest<Suggestion> {
 
     selectSuggestion(value: Suggestion, evt: MouseEvent | KeyboardEvent): void {
         const replacement = value.replacement;
-        console.log(value.overrideStart)
+        //console.log(value.overrideStart)
         const start = typeof value !== "string" && value.overrideStart ? value.overrideStart : this.context.start;
         
         const endPos = value.overrideEnd ?? this.context.end;
@@ -142,7 +142,8 @@ export default class SuggestionPopup extends EditorSuggest<Suggestion> {
             ...endPos,
             ch: Math.min(endPos.ch, this.context.editor.getLine(endPos.line).length)
         });
-
+        this.context.editor.setCursor({ ...start, ch: start.ch + replacement.length });
+        /*
         //Check if suggestion is a snippet
         if (replacement.contains("#") || replacement.contains("~")) {
             if (!this.disableSnippets) {
@@ -153,6 +154,7 @@ export default class SuggestionPopup extends EditorSuggest<Suggestion> {
         } else {
             this.context.editor.setCursor({ ...start, ch: start.ch + replacement.length });
         }
+        */
 
         this.close();
         this.justClosed = true;
