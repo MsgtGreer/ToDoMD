@@ -1,8 +1,6 @@
 import { App, ButtonComponent, Modal, Notice, PluginSettingTab, Setting } from "obsidian";
 import {isInstalled as isCalloutManagerInstalled} from "obsidian-callout-manager";
 import CompletrPlugin from "./main";
-import { FileScanner } from "./provider/scanner_provider";
-import { WordList } from "./provider/word_list_provider";
 import { ToDo } from "./provider/todo_provider";
 import { CalloutProviderSource, CompletrSettings, WordInsertionMode } from "./settings";
 import { TextDecoder } from "util";
@@ -195,42 +193,6 @@ export default class CompletrSettingsTab extends PluginSettingTab {
                     this.plugin.settings.frontMatterTagAppendSuffix = val;
                     await this.plugin.saveSettings();
                 }));
-
-        new Setting(containerEl)
-            .setName("File scanner provider")
-            .setHeading()
-            .addExtraButton(button => button
-                .setIcon("search")
-                .setTooltip("Immediately scan all .md files currently in your vault.")
-                .onClick(() => {
-                    new ConfirmationModal(this.plugin.app,
-                        "Start scanning?",
-                        "Depending on the size of your vault and computer, this may take a while.",
-                        button => button
-                            .setButtonText("Scan")
-                            .setCta(),
-                        async () => {
-                            await FileScanner.scanFiles(this.plugin.settings, this.plugin.app.vault.getMarkdownFiles());
-                        },
-                    ).open();
-                }))
-            .addExtraButton(button => button
-                .setIcon("trash")
-                .setTooltip("Delete all known words.")
-                .onClick(async () => {
-                    new ConfirmationModal(this.plugin.app,
-                        "Delete all known words?",
-                        "This will delete all words that have been scanned. No suggestions from this provider will show up anymore until new files are scanned.",
-                        button => button
-                            .setButtonText("Delete")
-                            .setWarning(),
-                        async () => {
-                            await FileScanner.deleteAllWords(this.plugin.app.vault);
-                        },
-                    ).open();
-                }));
-
-        this.createEnabledSetting("fileScannerProviderEnabled", "Whether or not the file scanner provider is enabled.", containerEl);
 
         new Setting(containerEl)
             .setName("Scan active file")

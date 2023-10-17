@@ -2,15 +2,10 @@ import { EditorPosition, KeymapContext, MarkdownView, Plugin, TFile, } from "obs
 import SnippetManager from "./snippet_manager";
 import SuggestionPopup, { SelectionDirection } from "./popup";
 import { CompletrSettings, DEFAULT_SETTINGS } from "./settings";
-import { WordList } from "./provider/word_list_provider";
-import { FileScanner } from "./provider/scanner_provider";
 import CompletrSettingsTab from "./settings_tab";
 import { EditorView, ViewUpdate } from "@codemirror/view";
 import { editorToCodeMirrorState, posFromIndex } from "./editor_helpers";
 import { markerStateField } from "./marker_state_field";
-import { FrontMatter } from "./provider/front_matter_provider";
-import { Latex } from "./provider/latex_provider";
-import { Callout } from "./provider/callout_provider";
 import { ToDo } from "./provider/todo_provider";
 import { SuggestionBlacklist } from "./provider/blacklist";
 
@@ -30,8 +25,8 @@ export default class CompletrPlugin extends Plugin {
         this.registerEditorSuggest(this._suggestionPopup);
 
         this.registerEvent(this.app.workspace.on('file-open', this.onFileOpened, this));
-        this.registerEvent(this.app.metadataCache.on('changed', FrontMatter.onCacheChange, FrontMatter));
-        this.app.workspace.onLayoutReady(() => FrontMatter.loadYAMLKeyCompletions(this.app.metadataCache, this.app.vault.getMarkdownFiles()));
+        //this.registerEvent(this.app.metadataCache.on('changed', FrontMatter.onCacheChange, FrontMatter));
+        //this.app.workspace.onLayoutReady(() => FrontMatter.loadYAMLKeyCompletions(this.app.metadataCache, this.app.vault.getMarkdownFiles()));
 
         this.registerEditorExtension(markerStateField);
         this.registerEditorExtension(EditorView.updateListener.of(new CursorActivityListener(this.snippetManager, this._suggestionPopup).listener));
@@ -87,7 +82,7 @@ export default class CompletrPlugin extends Plugin {
 
                         const validMods = t.modifiers.replace(new RegExp(`${hotkey.modifiers},*`), "").split(",");
                         //Sends the event again, only keeping the modifiers which didn't activate this command
-                        let event = new KeyboardEvent("keydown", {
+                        const event = new KeyboardEvent("keydown", {
                             key: hotkeyManager.defaultKeys[id][0].key,
                             ctrlKey: validMods.contains("Ctrl"),
                             shiftKey: validMods.contains("Shift"),
@@ -333,18 +328,13 @@ export default class CompletrPlugin extends Plugin {
 
     async onunload() {
         this.snippetManager.onunload();
-        await FileScanner.saveData(this.app.vault);
     }
 
     async loadSettings() {
         this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
 
         SuggestionBlacklist.loadData(this.app.vault).then(() => {
-            WordList.loadFromFiles(this.app.vault, this.settings);
-            FileScanner.loadData(this.app.vault);
-            Latex.loadCommands(this.app.vault);
-            Callout.loadSuggestions(this.app.vault, this);
-            ToDo.loadToDoFields(this.app.vault, this);
+            ToDo.loadToDoFields(this.app.vault);
         });
     }
 
@@ -359,8 +349,6 @@ export default class CompletrPlugin extends Plugin {
     private readonly onFileOpened = (file: TFile) => {
         if (!this.settings.fileScannerProviderEnabled || !this.settings.fileScannerScanCurrent || !file)
             return;
-
-        FileScanner.scanFile(this.settings, file, true);
     }
 }
 

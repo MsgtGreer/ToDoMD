@@ -27,8 +27,7 @@ class ToDoSuggestionProvider implements SuggestionProvider {
         const cursor = context.start;
         
         const line = editor.getLine(cursor.line);
-        //Check if we're in a LaTeX context
-        //const latexBlockType = getLatexBlockType(editor, context.start, settings.latexTriggerInCodeBlocks);
+
         const isquery = verifyIfLineIsTaks(line) ;
         if (!isquery)
             return [];

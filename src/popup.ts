@@ -1,7 +1,4 @@
 import { Suggestion, SuggestionProvider } from "./provider/provider";
-import { Latex } from "./provider/latex_provider";
-import { WordList } from "./provider/word_list_provider";
-import { FileScanner } from "./provider/scanner_provider";
 import { ToDo } from "./provider/todo_provider";
 import {
     App,
@@ -15,12 +12,9 @@ import {
 } from "obsidian";
 import SnippetManager from "./snippet_manager";
 import { CompletrSettings } from "./settings";
-import { FrontMatter } from "./provider/front_matter_provider";
 import { matchWordBackwards } from "./editor_helpers";
 import { SuggestionBlacklist } from "./provider/blacklist";
-import { Callout } from "./provider/callout_provider";
 
-const PROVIDERS: SuggestionProvider[] = [FrontMatter, Callout, Latex, FileScanner, WordList, ToDo];
 
 export default class SuggestionPopup extends EditorSuggest<Suggestion> {
     /**
@@ -67,28 +61,11 @@ export default class SuggestionPopup extends EditorSuggest<Suggestion> {
     getSuggestions(
         context: EditorSuggestContext
     ): Suggestion[] | Promise<Suggestion[]> {
-        console.log("Get suggestions")
+        //console.log("Get suggestions")
         let suggestions: Suggestion[] = [];
 
-        for (let provider of PROVIDERS) {
-            suggestions = [...suggestions, ...provider.getSuggestions({
-                ...context,
-                separatorChar: this.separatorChar
-            }, this.settings)];
-
-            if (provider.blocksAllOtherProviders && suggestions.length > 0) {
-                console.log("Blocking provider: ", provider)
-                suggestions.forEach((suggestion) => {
-                    if (!suggestion.overrideStart)
-                        return;
-
-                    // Fixes popup position
-                    this.context.start = suggestion.overrideStart;
-                });
-                break;
-            }
-        }
-
+        suggestions = ToDo.getSuggestions({...context, separatorChar: this.separatorChar}, this.settings);
+        //console.log(suggestions)
         const seen = new Set<string>();
         suggestions = suggestions.filter((suggestion) => {
             if (seen.has(suggestion.displayName))
@@ -97,6 +74,7 @@ export default class SuggestionPopup extends EditorSuggest<Suggestion> {
             seen.add(suggestion.displayName);
             return true;
         });
+        
         return suggestions.length === 0 ? null : suggestions.filter(s => !SuggestionBlacklist.has(s));
     }
 
@@ -116,7 +94,7 @@ export default class SuggestionPopup extends EditorSuggest<Suggestion> {
         }
         // if this line is a task, return the trigger info:
          
-        let {
+        const {
             query,
             separatorChar
         } = matchWordBackwards(editor, cursor, (char) => this.getCharacterRegex().test(char), this.settings.maxLookBackDistance);
