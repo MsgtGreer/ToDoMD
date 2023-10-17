@@ -1,6 +1,6 @@
 import { EditorPosition, EditorSuggestContext } from "obsidian";
 import { ToDoMDSettings } from "../settings";
-import { maybeLowerCase } from "../editor_helpers";
+import { maybeLowerCase } from "./editor_helpers";
 
 export class Suggestion {
     displayName: string;

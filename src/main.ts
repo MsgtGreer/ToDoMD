@@ -1,32 +1,27 @@
-import { EditorPosition, KeymapContext, MarkdownView, Plugin, TFile, } from "obsidian";
-import SnippetManager from "./snippet_manager";
-import SuggestionPopup, { SelectionDirection } from "./popup";
+import { EditorPosition, KeymapContext, Plugin, TFile, } from "obsidian";
+import SuggestionPopup, { SelectionDirection } from "./suggestors/popup";
 import { ToDoMDSettings, DEFAULT_SETTINGS } from "./settings";
 import ToDoMDSettingsTab from "./settings_tab";
 import { EditorView, ViewUpdate } from "@codemirror/view";
-import { editorToCodeMirrorState, posFromIndex } from "./editor_helpers";
-import { markerStateField } from "./marker_state_field";
-import { ToDo } from "./provider/todo_provider";
+import { posFromIndex } from "./suggestors/editor_helpers";
+import { markerStateField } from "./suggestors/marker_state_field";
+import { ToDo } from "./suggestors/todo_provider";
 
 export default class ToDoMDPlugin extends Plugin {
 
     settings: ToDoMDSettings;
-
-    private snippetManager: SnippetManager;
     private _suggestionPopup: SuggestionPopup;
 
     async onload() {
         await this.loadSettings();
-
-        this.snippetManager = new SnippetManager();
-        this._suggestionPopup = new SuggestionPopup(this.app, this.settings, this.snippetManager);
+        this._suggestionPopup = new SuggestionPopup(this.app, this.settings);
 
         this.registerEditorSuggest(this._suggestionPopup);
 
         this.registerEvent(this.app.workspace.on('file-open', this.onFileOpened, this));
 
         this.registerEditorExtension(markerStateField);
-        this.registerEditorExtension(EditorView.updateListener.of(new CursorActivityListener(this.snippetManager, this._suggestionPopup).listener));
+        this.registerEditorExtension(EditorView.updateListener.of(new CursorActivityListener(this._suggestionPopup).listener));
 
         this.addSettingTab(new ToDoMDSettingsTab(this.app, this));
 
@@ -201,40 +196,7 @@ export default class ToDoMDPlugin extends Plugin {
             // @ts-ignore
             isVisible: () => this._suggestionPopup.isVisible(),
         });
-        this.addCommand({
-            id: 'ToDoMD-jump-to-next-snippet-placeholder',
-            name: 'Jump to next snippet placeholder',
-            hotkeys: [
-                {
-                    key: "Enter",
-                    modifiers: []
-                }
-            ],
-            editorCallback: (editor, _) => {
-                const placeholder = this.snippetManager.placeholderAtPos(editor.getCursor());
-                //Sanity check
-                if (!placeholder)
-                    return;
-                const placeholderEnd = posFromIndex(editorToCodeMirrorState(placeholder.editor).doc, placeholder.marker.to);
 
-                if (!this.snippetManager.consumeAndGotoNextMarker(editor)) {
-                    editor.setSelections([{
-                        anchor: {
-                            ...placeholderEnd,
-                            ch: Math.min(editor.getLine(placeholderEnd.line).length, placeholderEnd.ch + 1)
-                        }
-                    }]);
-                }
-            },
-            // @ts-ignore
-            isVisible: () => {
-                const view = this.app.workspace.getActiveViewOfType(MarkdownView);
-                if (!view)
-                    return false;
-                const placeholder = this.snippetManager.placeholderAtPos(view.editor.getCursor());
-                return placeholder != null;
-            },
-        });
 
         // Here are some notes about this command and the isBypassCommand function:
         // - This command is registered last so that other hotkeys can be bound to tab without being overridden
@@ -306,7 +268,6 @@ export default class ToDoMDPlugin extends Plugin {
     }
 
     async onunload() {
-        this.snippetManager.onunload();
     }
 
     async loadSettings() {
@@ -330,14 +291,12 @@ export default class ToDoMDPlugin extends Plugin {
 
 class CursorActivityListener {
 
-    private readonly snippetManager: SnippetManager;
     private readonly suggestionPopup: SuggestionPopup;
 
     private cursorTriggeredByChange = false;
     private lastCursorLine = -1;
 
-    constructor(snippetManager: SnippetManager, suggestionPopup: SuggestionPopup) {
-        this.snippetManager = snippetManager;
+    constructor(suggestionPopup: SuggestionPopup) {
         this.suggestionPopup = suggestionPopup;
     }
 
@@ -361,11 +320,6 @@ class CursorActivityListener {
         if (didChangeLine)
             this.suggestionPopup.preventNextTrigger();
         this.lastCursorLine = cursor.line;
-
-        // Clear all placeholders when moving cursor somewhere else
-        if (!this.snippetManager.placeholderAtPos(cursor)) {
-            this.snippetManager.clearAllPlaceholders();
-        }
 
         // Prevents the suggestion popup from flickering when typing
         if (this.cursorTriggeredByChange) {

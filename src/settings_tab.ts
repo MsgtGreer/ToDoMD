@@ -1,6 +1,6 @@
 import { App, ButtonComponent, Modal, PluginSettingTab, Setting } from "obsidian";
 import ToDoMDPlugin from "./main";
-import { ToDo } from "./provider/todo_provider";
+import { ToDo } from "./suggestors/todo_provider";
 import { CalloutProviderSource, ToDoMDSettings} from "./settings";
 
 export default class ToDoMDSettingsTab extends PluginSettingTab {

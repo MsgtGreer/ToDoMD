@@ -1,5 +1,5 @@
-import { Suggestion, SuggestionProvider } from "./provider/provider";
-import { ToDo } from "./provider/todo_provider";
+import { Suggestion} from "./provider";
+import { ToDo } from "./todo_provider";
 import {
     App,
     Editor,
@@ -10,8 +10,7 @@ import {
     getIcon,
     TFile
 } from "obsidian";
-import SnippetManager from "./snippet_manager";
-import { ToDoMDSettings } from "./settings";
+import { ToDoMDSettings } from "../settings";
 import { matchWordBackwards } from "./editor_helpers";
 
 
@@ -26,18 +25,15 @@ export default class SuggestionPopup extends EditorSuggest<Suggestion> {
     private compiledCharacterRegex: RegExp;
     private focused = false;
 
-    private readonly snippetManager: SnippetManager;
     private readonly settings: ToDoMDSettings;
-    private readonly disableSnippets: boolean;
 
-    constructor(app: App, settings: ToDoMDSettings, snippetManager: SnippetManager) {
+    constructor(app: App, settings: ToDoMDSettings) {
         super(app);
-        this.disableSnippets = true;//(app.vault as any).config?.legacyEditor;
+        
         this.settings = settings;
-        this.snippetManager = snippetManager;
 
         //Remove default key registrations
-        let self = this as any;
+        const self = this as any;
         self.scope.keys = [];
     }
 
@@ -142,18 +138,6 @@ export default class SuggestionPopup extends EditorSuggest<Suggestion> {
             ch: Math.min(endPos.ch, this.context.editor.getLine(endPos.line).length)
         });
         this.context.editor.setCursor({ ...start, ch: start.ch + replacement.length });
-        /*
-        //Check if suggestion is a snippet
-        if (replacement.contains("#") || replacement.contains("~")) {
-            if (!this.disableSnippets) {
-                this.snippetManager.handleSnippet(replacement, start, this.context.editor);
-            } else {
-                console.log("ToDoMD: Please enable Live Preview mode to use snippets");
-            }
-        } else {
-            this.context.editor.setCursor({ ...start, ch: start.ch + replacement.length });
-        }
-        */
 
         this.close();
         this.justClosed = true;

@@ -3,7 +3,7 @@ import { EditorState, Text } from "@codemirror/state";
 import { EditorView } from "@codemirror/view";
 
 export function posFromIndex(doc: Text, offset: number): EditorPosition {
-    let line = doc.lineAt(offset)
+    const line = doc.lineAt(offset)
     return { line: line.number - 1, ch: offset - line.from }
 }
 
@@ -44,7 +44,7 @@ export function matchWordBackwards(
         return { query, separatorChar};
     }    
     // Save some time for very long lines
-    let lookBackEnd = Math.max(0, cursor.ch - maxLookBackDistance);
+    const lookBackEnd = Math.max(0, cursor.ch - maxLookBackDistance);
     // Find word in front of cursor
     for (let i = cursor.ch - 1; i >= lookBackEnd; i--) {
         const prevChar = editor.getRange({ ...cursor, ch: i }, { ...cursor, ch: i + 1 });
@@ -123,24 +123,4 @@ export class BlockType {
     public get otherType(): BlockType {
         return this.otherType0;
     }
-}
-
-
-function indexOf<T>(arr: T[], predicate: (element: T) => boolean, fromIndex: number = 0): number {
-    for (let i = fromIndex; i < arr.length; i++) {
-        if (predicate(arr[i]))
-            return i;
-    }
-
-    return -1;
-}
-
-function substringMatches(str: string, toMatch: string, from: number): boolean {
-    const bound = from + toMatch.length - 1;
-    for (let i = from; i < bound; i++) {
-        if (str.charAt(i) !== toMatch.charAt(i - from))
-            return false;
-    }
-
-    return true;
 }

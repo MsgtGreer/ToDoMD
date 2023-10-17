@@ -1,5 +1,11 @@
+/**
+ * ToDoMD is the baseclass for the JS implementation of the ToDOMD rules.
+ * I will link the manifesto as soon as i have it written.
+ * Every ToDo has some basic fields that ate private fields to the class at the moment.
+ */
 export default class ToDoMD {
-    private status;
+    private status: string;
+    private priority: string; 
     private contributor = new todoAttribute("+","","Add a responsible person to the task");
     private name = new todoAttribute("?","", "Give this ToDo a name, you can even give a link to a note.");
     private description = new todoAttribute("%","", "Give this ToDo a description.");
@@ -17,41 +23,64 @@ export default class ToDoMD {
         this.duedate];
     
     private keysList = this.attributesList.map(attribute => attribute.key);
-// Default constructor
-    constructor(toDoLine: string = "") {
+/**
+ * The ToDo class can be constructed either in a blank state or with a string
+ * @param toDoLine - A line that should be parsed as a todo. 
+ */
+    constructor(toDoLine = "") {
         if (toDoLine)
             this.parseToDo(toDoLine)
 
     }
-
+    /**
+     * Checks all of the attributes of this todo as gatherd in @this.attributesList and finds the attributes with empty values.
+     * 
+     * @returns A list of Keys for empty ToDo attributes.
+     */
     missingToDoAttributeKeys(): string[]{
-        let listOfEmpty =  this.attributesList.filter(attr => attr.value === "");
-        let listOfEmptyKeys=listOfEmpty.map(attr => attr.key);
+        const listOfEmpty =  this.attributesList.filter(attr => attr.value === "");
+        const listOfEmptyKeys=listOfEmpty.map(attr => attr.key);
         return listOfEmptyKeys;
     }
-
-    parseToDo(todoLine: string){
-        todoLine = this.parseTaskPrefix(todoLine);
-        this.status = todoLine.charAt(0);
-        todoLine = todoLine.slice(1);        
-        let attributeFields = this.splitToDoInAttributes(todoLine, this.keysList);
-        for (var i=0; i< attributeFields.length; i++){
-            var key = attributeFields[i].charAt(0);
-            var value = attributeFields[i].slice(1);
+    /**
+     * Parses a string into this todo class
+     * @param Line A string that should be parsed into a todo.
+     */
+    parseToDo(Line: string){
+        let {status, toDoLine} = this.parseTaskPrefix(Line);
+        this.status = status;       
+        const attributeFields = this.splitToDoInAttributes(toDoLine, this.keysList);
+        for (let i=0; i< attributeFields.length; i++){
+            const key = attributeFields[i].charAt(0);
+            const value = attributeFields[i].slice(1);
             //console.log("Key, Value: ",key, " ", value);
-            let attribute = this.attributesList.find(attr => attr.key === key);
+            const attribute = this.attributesList.find(attr => attr.key === key);
             if (attribute){
                 attribute.value = value;
-            }
+            } 
         }  
     }
-
-    parseTaskPrefix(input: string){
+    /**
+     * Parses the first part of a todo line. 
+     * A todoline can begin with - [*] where * denotes the todo status.
+     * the function returns the todo status and the rest of the todo line.
+     * @param input string containing a todo line
+     * @returns status and toDoLine 
+     */
+    parseTaskPrefix(input: string): { status: string, toDoLine: string }{
         const regex = /^- \[([^\]])\] /;
         const result = input.replace(regex, (match, capturedChar) => capturedChar);
-        return result;
+        let status = result.charAt(0);
+        let toDoLine = result.slice(1);
+        console.log("Parsed: ",toDoLine)
+        return {status, toDoLine};
     }
-
+    /**
+     * Splits a provided ToDo line into its attribute substrings.
+     * @param toDoLine the line to be split
+     * @param attributeKeys the keys that denote the attributes
+     * @returns A list of strings that consist of their key and their value joined by ''
+     */
     splitToDoInAttributes(toDoLine: string, attributeKeys: string[]) {
         // Create a regular expression pattern that matches a whitespace followed by any of the key characters
         // Use the regular expression to split the input string
@@ -59,7 +88,7 @@ export default class ToDoMD {
             return [];
         const splitLine = toDoLine.split(' ');
         //console.log("Split into: ",splitLine)
-        let chunks = [];
+        const chunks = [];
         let protoChunk = "";
         for (let i=0;i<splitLine.length;i++){
             //console.log("Possible Key: ",splitLine[i].charAt(0),attributeKeys.includes(splitLine[i].charAt(0)))
@@ -82,25 +111,42 @@ export default class ToDoMD {
         //console.log("ToDo Chunks: ",chunks)
         return chunks;
     }
-
+    /**
+     * An interface to get the aatributesList
+     * @returns this.attributesList
+     */
     getAttributesList(): todoAttribute[]{
         return this.attributesList;
     }
 }
 
+/**
+ * A class for todo attributes. Each attribute has a keym a value and a description
+ */
 class todoAttribute{
-    /*
-    () : Priority ++,+, ,-
-    + : Add a person to the task 
-    ? : ToDo Name. This creates a node link, where i can fill this todo with notes that where created in its completion. Advantage is, renaming the note will change the ToDos name.
-    ^ : Link a todo, that this todo depends on. Requires a named todo.
-    @ : context tag, giving short and precise context, like @research, @read or @write
-    # : add a project or another other tag. Project tags are '#project/name'
-    due: [[]] : add a due date, and link it to the respective daily note
-    */
+    /**
+     * Constructs a todo attribute
+     * @param key 
+     * @param value 
+     * @param description 
+     */
     constructor(public readonly key: string, public value: string | string[] , public readonly description: string) {
         this.key = key;
         this.value = value;
         this.description = description;
     }
+}
+
+const enum toDoPriority{
+    VERY_HIGH = '++',
+    HIGH = '+',
+    NORMAL = '-',
+    LOW = '-'
+}
+
+const enum toDoStatus{
+    OPEN = " ",
+    IN_PROCESS = "-",
+    DONE = "+",
+    FAILED = "x"
 }

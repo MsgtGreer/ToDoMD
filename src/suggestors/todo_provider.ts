@@ -1,15 +1,9 @@
 import { Suggestion, SuggestionContext, SuggestionProvider } from "./provider";
-import { ToDoMDSettings as ToDoMDSettings, intoToDoMDPath } from "../settings";
+import { ToDoMDSettings, intoToDoMDPath } from "../settings";
 import { Notice, Vault } from "obsidian";
-import ToDoMD from "./todo"
+import ToDoMD from "../todo"
 
-function substringUntil(str: string, delimiter: string): string {
-    let index = str.indexOf(delimiter);
-    if (index === -1)
-        return str;
 
-    return str.substring(0, index);
-}
 const TODO_ATTRIBUTES_PATH = "todo_attributes.json";
 class ToDoSuggestionProvider implements SuggestionProvider {
 
@@ -83,12 +77,8 @@ function generateDefaultToDoSuggestions(): Suggestion[] {
     return aToDo.attributesList.map(attr => new Suggestion(attr.key+" - "+attr.description,attr.key));
 }
 
-function verifyIfLineIsTaks(line): boolean{
+function verifyIfLineIsTaks(line: string): boolean{
     const taskRegex = /^\s*-\s\[[\s*x-]\]/;
     return taskRegex.test(line);     
 } 
 
-function verifyLastWasSpace(line: string,pos: number): boolean{
-    console.log("Char at: ",pos, " was ", line.charAt(pos))
-    return line.charAt(pos) === " "
-}
