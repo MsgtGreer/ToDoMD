@@ -1,21 +1,31 @@
 import { EditorPosition, KeymapContext, Plugin, TFile, } from "obsidian";
-import SuggestionPopup from "./suggestors/popup";
+
 import { ToDoMDSettings, DEFAULT_SETTINGS } from "./settings";
 import ToDoMDSettingsTab from "./settings_tab";
 import { EditorView, ViewUpdate } from "@codemirror/view";
-import { posFromIndex } from "./suggestors/editor_helpers";
+
+import SuggestionPopup, { SelectionDirection } from "./suggestors/popup";
 import { markerStateField } from "./suggestors/marker_state_field";
+import { posFromIndex } from "./suggestors/editor_helpers";
 import { ToDo } from "./suggestors/todo_provider";
-import { Commands } from "src/suggestors/commands"
+import { SuggestorCommands } from "./suggestors/commands"
 
-export default class ToDoMDPlugin extends Plugin {
+import { TasksEvents } from './TasksEvents';
+import { Cache } from './caching/Cache';
 
+export default class ToDoMDPlugin extends Plugin {    
     settings: ToDoMDSettings;
-    private _suggestionPopup: SuggestionPopup;
+// suggestor
+    public _suggestionPopup: SuggestionPopup;
+//caching
+    private cache: Cache | undefined;
+    public inlineRenderer: InlineRenderer | undefined;
+    public queryRenderer: QueryRenderer | undefined;
 
     async onload(){
 
         await this.loadSettings();
+// suggestor 
         this._suggestionPopup = new SuggestionPopup(this.app, this.settings);
 
         this.registerEditorSuggest(this._suggestionPopup);
@@ -26,8 +36,16 @@ export default class ToDoMDPlugin extends Plugin {
         this.registerEditorExtension(EditorView.updateListener.of(new CursorActivityListener(this._suggestionPopup).listener));
 
         this.addSettingTab(new ToDoMDSettingsTab(this.app, this));
-        new Commands({ plugin: this });
+        new SuggestorCommands({ plugin: this });
+        
         this.setupCommands();
+// Caching:
+        const events = new TasksEvents({ obsidianEvents: this.app.workspace });
+        this.cache = new Cache({
+                    metadataCache: this.app.metadataCache,
+                    vault: this.app.vault,
+                    events,
+                });
 
         if ((this.app.vault as any).config?.legacyEditor) {
             console.log("ToDoMD: Without Live Preview enabled, most features of ToDoMD will not work properly!");

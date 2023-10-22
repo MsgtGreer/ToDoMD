@@ -1,30 +1,34 @@
 [
   {
-    "displayName": "+ - Add a responsible person to the task",
+    "displayName": "() - How important is it, that this ToDo gets done?",
+    "replacement": "()"
+  },
+  {
+    "displayName": "+ - Who is responsible for this ToDO?",
     "replacement": "+"
   },
   {
-    "displayName": "? - Give this ToDo a name, you can even give a link to a note.",
+    "displayName": "? - How do you referr to this ToDo?",
     "replacement": "?"
   },
   {
-    "displayName": "% - Give this ToDo a description.",
+    "displayName": "% - What is part of this ToDo?",
     "replacement": "%"
   },
   {
-    "displayName": "^ - Link a parent todo, that might have created this todo.",
+    "displayName": "^ - What has to be done first?",
     "replacement": "^"
   },
   {
-    "displayName": "@ - Add a context tag.",
+    "displayName": "@ - In which context would you do this ToDo?",
     "replacement": "@"
   },
   {
-    "displayName": "# - Add a tag to the note, to link it  to a project.",
+    "displayName": "# - What do you want to link this ToDo to?",
     "replacement": "#"
   },
   {
-    "displayName": ": - Add a due date",
+    "displayName": ": - When has this ToDo be done?",
     "replacement": ":"
   }
 ]

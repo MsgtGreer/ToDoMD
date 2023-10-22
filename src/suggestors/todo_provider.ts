@@ -1,7 +1,8 @@
 import { Suggestion, SuggestionContext, SuggestionProvider } from "./provider";
 import { ToDoMDSettings, intoToDoMDPath } from "../settings";
 import { Notice, Vault } from "obsidian";
-import ToDoMD from "../todo"
+import ToDoMD, { basenameToKey, basenameToDescription } from "../todo"
+import obsidian_ToDo from "../obsidian-todo"
 
 
 const TODO_ATTRIBUTES_PATH = "todo_attributes.json";
@@ -10,7 +11,6 @@ class ToDoSuggestionProvider implements SuggestionProvider {
     private loadedCommands: Suggestion[] = [];
     // this one provides suggestion and applies context filters. It serves as the interface.
     getSuggestions(context: SuggestionContext, settings: ToDoMDSettings): Suggestion[] {
-        //console.log("Requesting ToDo Suggestions")
         if (!settings.ToDoProviderEnabled || !context.query)
             return [];
         if (!(context.editor.getRange({ ...context.start, ch: context.end.ch-1 }, { ...context.start, ch: context.end.ch })===" ")){
@@ -21,24 +21,18 @@ class ToDoSuggestionProvider implements SuggestionProvider {
         
         const line = editor.getLine(cursor.line);
 
-        const isquery = verifyIfLineIsTaks(line) ;
+        const isquery = obsidian_ToDo.isToDo(line) ;
         if (!isquery)
             return [];
         
-        const todoInstance = new ToDoMD();
-        todoInstance.parseToDo(line);
+        const todoInstance = obsidian_ToDo.fromLine(line, undefined);
         const missingToDoAttributeKeys = todoInstance.missingToDoAttributeKeys();
-        //console.log("ToDo is missing: ",missingToDoAttributeKeys);
-        //console.log("Nown Suggestions: ", this.loadedCommands.map(s => s.replacement));
         const retval = this.loadedCommands.filter(s => missingToDoAttributeKeys.some(key => key === s.replacement))
                         .map(obj => new Suggestion(obj.displayName, obj.replacement,editor.getCursor()));
-        //console.log("Hence I suggest: ",retval);
-        //console.log(retval);
         return retval;
     }
     //this one loads the commands that are applicable in context
     async loadToDoFields(vault: Vault) {
-        //console.log("Loading ToDoFiels...")
         const path = intoToDoMDPath(vault, TODO_ATTRIBUTES_PATH);
         if (!(await vault.adapter.exists(path))) {
             const defaultCommands = generateDefaultToDoSuggestions();
@@ -74,11 +68,11 @@ export const ToDo = new ToDoSuggestionProvider();
  */
 function generateDefaultToDoSuggestions(): Suggestion[] {
     const aToDo = new ToDoMD();
-    return aToDo.attributesList.map(attr => new Suggestion(attr.key+" - "+attr.description,attr.key));
+    const retval = aToDo.attributesList.map(attr => {
+        const basename = attr.basename as keyof typeof basenameToKey;
+        console.log("BaseName: ",basename)
+        return new Suggestion(basenameToKey[basename]+" - "+basenameToDescription[basename],basenameToKey[basename])
+    }); 
+    console.log("Default Suggestions: ", retval);
+    return retval;
 }
-
-function verifyIfLineIsTaks(line: string): boolean{
-    const taskRegex = /^\s*-\s\[[\s*x-]\]/;
-    return taskRegex.test(line);     
-} 
-

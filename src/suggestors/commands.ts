@@ -1,7 +1,7 @@
-import type { App, Editor, MarkdownFileInfo, MarkdownView, Plugin, View } from 'obsidian';
+import type { App, Plugin } from 'obsidian';
 import SuggestionPopup, { SelectionDirection } from "./popup";
 
-export class Commands {
+export class SuggestorCommands {
     private readonly plugin: Plugin;
 
     private get app(): App {
@@ -67,6 +67,9 @@ export class Commands {
             // @ts-ignore
             isVisible: () => plugin._suggestionPopup.isVisible(),
         });
+        /**
+         * Pressing enter inserts the selected suggestion
+         */
         plugin.addCommand({
             id: 'ToDoMD-insert-selected-suggestion',
             name: 'Insert selected suggestion',
@@ -81,6 +84,9 @@ export class Commands {
             isBypassCommand: () => !plugin._suggestionPopup.isFocused(),
             isVisible: () => plugin._suggestionPopup.isVisible(),
         });
+        /**
+         * ???
+         */
         plugin.addCommand({
             id: 'ToDoMD-bypass-enter-key',
             name: 'Bypass the popup and press Enter',
@@ -96,6 +102,9 @@ export class Commands {
             isBypassCommand: () => true,
             isVisible: () => plugin._suggestionPopup.isVisible(),
         });
+        /**
+         * ???
+         */
         plugin.addCommand({
             id: 'ToDoMD-bypass-tab-key',
             name: 'Bypass the popup and press Tab',
@@ -111,6 +120,9 @@ export class Commands {
             isBypassCommand: () => true,
             isVisible: () => plugin._suggestionPopup.isVisible(),
         });
+        /**
+         * You can close the popup at any time using escape
+         */
         plugin.addCommand({
             id: 'ToDoMD-close-suggestion-popup',
             name: 'Close suggestion popup',

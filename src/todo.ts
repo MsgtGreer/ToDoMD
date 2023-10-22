@@ -1,152 +1,162 @@
+import { isDate } from "moment";
+
 /**
  * ToDoMD is the baseclass for the JS implementation of the ToDOMD rules.
  * I will link the manifesto as soon as i have it written.
  * Every ToDo has some basic fields that ate private fields to the class at the moment.
  */
-export default class ToDoMD {
-    private status: string;
-    private priority: string; 
-    private contributor = new todoAttribute("+","","Add a responsible person to the task");
-    private name = new todoAttribute("?","", "Give this ToDo a name, you can even give a link to a note.");
-    private description = new todoAttribute("%","", "Give this ToDo a description.");
-    private parent = new todoAttribute("^","", "Link a parent todo, that might have created this todo.")
-    private context = new todoAttribute("@","", "Add a context tag.")
-    private tag = new todoAttribute("#","", "Add a tag to the note, to link it  to a project.");
-    private duedate = new todoAttribute(":","","Add a due date")
+export enum basenameToKey{
+    importance = '()',
+    todoname = '?',
+    responsible =  '+',
+    description = '%',
+    parent =  '^',
+    context = '@',
+    tag = '#',
+    duedate = ':'
+}
+/*
+export enum basenameToEscapedKey{
+    importance = '()'.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'),
+    name = '?'.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'),
+    responsible =  '+'.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'),
+    description = '%'.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'),
+    parent =  '^'.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'),
+    context = '@'.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'),
+    tag = '#'.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'),
+    duedate = ':'.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')
+}
+*/
+export enum basenameToDescription{
+    importance = 'How important is it, that this ToDo gets done?',
+    todoname = 'How do you referr to this ToDo?',
+    responsible = 'Who is responsible for this ToDO?',
+    description = 'What is part of this ToDo?',
+    parent = 'What has to be done first?',
+    context = 'In which context would you do this ToDo?',
+    tag = 'What do you want to link this ToDo to?',
+    duedate = 'When has this ToDo be done?'
+}
+export class basenameToRegExp{
+    static importance = /\((\+\+|\+| {0,1}|-)\)/;
+    static todoname = /^\?/;
+    static responsible = /^\+/;
+    static description = /^%/;
+    static parent = /^\^/;
+    static context = /^@/;
+    static tag = /^#/;
+    static duedate = /^:/;
+}
+/*
+export enum importance{
+    VERY_HIGH = '++',
+    HIGH = '+',
+    NORMAL = ' ',
+    NOT = '-'
+}
+*/
 
-    attributesList = [this.contributor,
-        this.name,
+export default class ToDoMD {
+    private status = "";
+    private importance = new todoAttribute("importance",""); 
+    private responsible = new todoAttribute("responsible","");
+    private todoname = new todoAttribute("todoname","");
+    private description = new todoAttribute("description","");
+    private parent = new todoAttribute("parent","")
+    private context = new todoAttribute("context","")
+    private tag = new todoAttribute("tag","");
+    private duedate = new todoAttribute("duedate","")
+
+    public attributesList = [this.importance, 
+        this.responsible,
+        this.todoname,
         this.description,
         this.parent,
         this.context,
         this.tag,
         this.duedate];
     
-    private keysList = this.attributesList.map(attribute => attribute.key);
+    private keysList = this.attributesList.map(attribute => attribute.basename).map(basename => basenameToKey[basename as keyof typeof basenameToKey]);
 /**
  * The ToDo class can be constructed either in a blank state or with a string
  * @param toDoLine - A line that should be parsed as a todo. 
  */
-    constructor(toDoLine = "") {
-        if (toDoLine)
-            this.parseToDo(toDoLine)
-
+    constructor(attributes?:Record<string,string>) {
+        if (attributes){
+           this.status = attributes.status || "";
+            this.importance.value = attributes.importance||"";
+            this.responsible.value = attributes.responsible||"";
+            this.todoname.value = attributes.todoname||"";
+            this.description.value = attributes.description||"";
+            this.parent.value = attributes.parent||"";
+            this.context.value = attributes.context||"";
+            this.tag.value = attributes.tag||"";                  
+            this.duedate.value = attributes.duedate||"";
+        }
     }
+
     /**
      * Checks all of the attributes of this todo as gatherd in @this.attributesList and finds the attributes with empty values.
      * 
      * @returns A list of Keys for empty ToDo attributes.
      */
-    missingToDoAttributeKeys(): string[]{
+    missingToDoAttributes(): string[]{
         const listOfEmpty =  this.attributesList.filter(attr => attr.value === "");
-        const listOfEmptyKeys=listOfEmpty.map(attr => attr.key);
-        return listOfEmptyKeys;
+        const listOfEmptyNames = listOfEmpty.map(attribute => attribute.basename);
+        return listOfEmptyNames;
     }
-    /**
-     * Parses a string into this todo class
-     * @param Line A string that should be parsed into a todo.
-     */
-    parseToDo(Line: string){
-        let {status, toDoLine} = this.parseTaskPrefix(Line);
-        this.status = status;       
-        const attributeFields = this.splitToDoInAttributes(toDoLine, this.keysList);
-        for (let i=0; i< attributeFields.length; i++){
-            const key = attributeFields[i].charAt(0);
-            const value = attributeFields[i].slice(1);
-            //console.log("Key, Value: ",key, " ", value);
-            const attribute = this.attributesList.find(attr => attr.key === key);
-            if (attribute){
-                attribute.value = value;
-            } 
-        }  
+    //.map(basename => basenameToKey[basename as keyof typeof basenameToKey]);
+    public getStatus(): string {
+        return this.status;
     }
-    /**
-     * Parses the first part of a todo line. 
-     * A todoline can begin with - [*] where * denotes the todo status.
-     * the function returns the todo status and the rest of the todo line.
-     * @param input string containing a todo line
-     * @returns status and toDoLine 
-     */
-    parseTaskPrefix(input: string): { status: string, toDoLine: string }{
-        const regex = /^- \[([^\]])\] /;
-        const result = input.replace(regex, (match, capturedChar) => capturedChar);
-        let status = result.charAt(0);
-        let toDoLine = result.slice(1);
-        console.log("Parsed: ",toDoLine)
-        return {status, toDoLine};
-    }
-    /**
-     * Splits a provided ToDo line into its attribute substrings.
-     * @param toDoLine the line to be split
-     * @param attributeKeys the keys that denote the attributes
-     * @returns A list of strings that consist of their key and their value joined by ''
-     */
-    splitToDoInAttributes(toDoLine: string, attributeKeys: string[]) {
-        // Create a regular expression pattern that matches a whitespace followed by any of the key characters
-        // Use the regular expression to split the input string
-        if (toDoLine === "")
-            return [];
-        const splitLine = toDoLine.split(' ');
-        //console.log("Split into: ",splitLine)
-        const chunks = [];
-        let protoChunk = "";
-        for (let i=0;i<splitLine.length;i++){
-            //console.log("Possible Key: ",splitLine[i].charAt(0),attributeKeys.includes(splitLine[i].charAt(0)))
-            if (attributeKeys.includes(splitLine[i].charAt(0)) && protoChunk===""){
-                //console.log("")
-                protoChunk += splitLine[i]
-            } else if (attributeKeys.includes(splitLine[i].charAt(0)) && !(protoChunk==="")){
-                //console.log("End of chunk, start of new")
-                chunks.push(protoChunk);
-                protoChunk ="";
-                protoChunk += splitLine[i];
-            } else if (!attributeKeys.includes(splitLine[i].charAt(0)) && !(protoChunk==="")){
-                protoChunk += splitLine[i];
-            } else if (!attributeKeys.includes(splitLine[i].charAt(0)) && protoChunk===""){
-                protoChunk += this.description.key+splitLine[i];
-            }
-            if (i==splitLine.length-1)
-                chunks.push(protoChunk);
-        }
-        //console.log("ToDo Chunks: ",chunks)
-        return chunks;
-    }
-    /**
-     * An interface to get the aatributesList
-     * @returns this.attributesList
-     */
-    getAttributesList(): todoAttribute[]{
-        return this.attributesList;
-    }
-}
 
+    public getImportance(): string {
+        return this.importance.value;
+    }
+
+    public getResponsible(): string {
+    return this.responsible.value;
+    }
+
+    public getName(): string {
+    return this.todoname.value;
+    }
+
+    public getDescription(): string {
+    return this.description.value;
+    }
+
+    public getParent(): string {
+    return this.parent.value;
+    }
+
+    public getContext(): string {
+    return this.context.value;
+    }
+
+    public getTag(): string {
+    return this.tag.value;
+    }
+
+    public getDueDate(): string {
+    return this.duedate.value;
+    }
+    public isImportance(line: string){
+
+    }
+
+}
 /**
  * A class for todo attributes. Each attribute has a keym a value and a description
  */
 class todoAttribute{
     /**
      * Constructs a todo attribute
-     * @param key 
-     * @param value 
-     * @param description 
+     * @param basename 
+     * @param value
      */
-    constructor(public readonly key: string, public value: string | string[] , public readonly description: string) {
-        this.key = key;
+    constructor(public readonly basename: string, public value: string) {
+        this.basename = basename;
         this.value = value;
-        this.description = description;
     }
-}
-
-const enum toDoPriority{
-    VERY_HIGH = '++',
-    HIGH = '+',
-    NORMAL = '-',
-    LOW = '-'
-}
-
-const enum toDoStatus{
-    OPEN = " ",
-    IN_PROCESS = "-",
-    DONE = "+",
-    FAILED = "x"
 }
