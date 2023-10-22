@@ -3,7 +3,8 @@ on:
   # Obtained fom https://stackoverflow.com/a/61565445/104370
   push:
     branches:
-      - main
+      - master
+      - dev
   workflow_dispatch:
     # Inputs the workflow accepts.
     inputs:

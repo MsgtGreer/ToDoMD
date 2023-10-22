@@ -6,9 +6,11 @@ This plugin provides advanced auto-completion functionality for obsidian. Legacy
 
 - [x] ?ToDoMD auto completion
 - [ ] ?ToDoMD query feature
+<<<<<<< HEAD
 - [ ] ?ToDOMD Sidebar with todos
   - [ ] %Make the Sidebar customizable
 - [ ] ?ToDoMD in editor styling
+- [ ] ?Think about more features
 
 ## Installation
 
