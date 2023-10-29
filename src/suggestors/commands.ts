@@ -1,5 +1,7 @@
 import type { App, Plugin } from 'obsidian';
 import SuggestionPopup, { SelectionDirection } from "./popup";
+import ToDoMD from 'src/todo';
+import ToDoMDPlugin from 'src/main';
 
 export class SuggestorCommands {
     private readonly plugin: Plugin;
@@ -8,7 +10,7 @@ export class SuggestorCommands {
         return this.plugin.app;
     }
 
-    constructor({ plugin }: { plugin: Plugin }) {
+    constructor({ plugin }: { plugin: ToDoMDPlugin }) {
         this.plugin = plugin;
         /**
          * Open the suggestion popup

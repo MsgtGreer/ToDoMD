@@ -66,12 +66,10 @@ export default class obsidian_ToDo{
             attributes["importance"] = match[0].charAt(1);
             // for some reason the .replace adds a bunch of spaces. I added a trim to remove them 
             line = line.replace(basenameToRegExp["importance"],"").trim();
-            //console.log("removed importance flag: ", line)
         }
 
         const splitLine = line.split(' ');
         let lastAttr = "";
-        //console.log("Split into: ",splitLine)
         for (let i=0;i<splitLine.length;i++){         
             if (basenameToRegExp["todoname"].test(splitLine[i])){
                 attributes["todoname"] = splitLine[i].slice(1);
@@ -110,7 +108,6 @@ export default class obsidian_ToDo{
             }
             attributes[lastAttr] += " " + splitLine[i];
         }
-        //console.log("Got Attributes: ", attributes);
         return attributes;
     }
     /**

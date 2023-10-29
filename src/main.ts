@@ -3,9 +3,8 @@ import { EditorPosition, KeymapContext, Plugin, TFile, } from "obsidian";
 import { ToDoMDSettings, DEFAULT_SETTINGS } from "./settings";
 import ToDoMDSettingsTab from "./settings_tab";
 import { EditorView, ViewUpdate } from "@codemirror/view";
-
 import SuggestionPopup, { SelectionDirection } from "./suggestors/popup";
-import { markerStateField } from "./suggestors/marker_state_field";
+//import { markerStateField } from "./suggestors/marker_state_field";
 import { posFromIndex } from "./suggestors/editor_helpers";
 import { ToDo } from "./suggestors/todo_provider";
 import { SuggestorCommands } from "./suggestors/commands"
@@ -13,13 +12,16 @@ import { SuggestorCommands } from "./suggestors/commands"
 import { TasksEvents } from './TasksEvents';
 import { Cache } from './caching/Cache';
 
+import { QueryRenderer } from "./query/query-renderer";
+
 export default class ToDoMDPlugin extends Plugin {    
     settings: ToDoMDSettings;
 // suggestor
     public _suggestionPopup: SuggestionPopup;
 //caching
     private cache: Cache | undefined;
-    public inlineRenderer: InlineRenderer | undefined;
+// Rendering
+    //public inlineRenderer: InlineRenderer | undefined;
     public queryRenderer: QueryRenderer | undefined;
 
     async onload(){
@@ -32,7 +34,7 @@ export default class ToDoMDPlugin extends Plugin {
 
         this.registerEvent(this.app.workspace.on('file-open', this.onFileOpened, this));
 
-        this.registerEditorExtension(markerStateField);
+        //this.registerEditorExtension(markerStateField);
         this.registerEditorExtension(EditorView.updateListener.of(new CursorActivityListener(this._suggestionPopup).listener));
 
         this.addSettingTab(new ToDoMDSettingsTab(this.app, this));
@@ -50,6 +52,8 @@ export default class ToDoMDPlugin extends Plugin {
         if ((this.app.vault as any).config?.legacyEditor) {
             console.log("ToDoMD: Without Live Preview enabled, most features of ToDoMD will not work properly!");
         }
+// Rendering
+    this.queryRenderer = new QueryRenderer({ plugin: this, events });
 
     }
 

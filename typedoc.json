@@ -1,0 +1,9 @@
+{
+    "entryPoints": ["./src"],
+    "entryPointStrategy": "Expand",
+    "out": "./docs",
+    "plugin": ["typedoc-plugin-markdown","typedoc-github-wiki-theme","typedoc-plugin-rename-defaults"],
+    "theme": "github-wiki",
+    "tsconfig": "./tsconfig.json",
+    "name": "obsidian-ToDoMD"
+  }

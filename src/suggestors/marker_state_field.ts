@@ -1,3 +1,4 @@
+/*
 import { Range, RangeSet, StateEffect, StateField } from "@codemirror/state";
 import { Decoration, EditorView } from "@codemirror/view";
 
@@ -13,7 +14,7 @@ export const markerStateField = StateField.define<RangeSet<Decoration>>({
 
         for (const effect of tr.effects) {
             if (effect.is(addMark))
-                value = value.update({ add: [effect.value]/*, sort: true*/ });
+                value = value.update({ add: [effect.value] });
             else if (effect.is(clearMarks))
                 value = value.update({ filter: () => false });
             else if (effect.is(removeMarkBySpecAttribute))
@@ -24,3 +25,4 @@ export const markerStateField = StateField.define<RangeSet<Decoration>>({
     },
     provide: f => EditorView.decorations.from(f)
 })
+*/

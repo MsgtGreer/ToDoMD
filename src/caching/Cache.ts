@@ -5,7 +5,6 @@ import { Mutex } from 'async-mutex';
 import obsidian_ToDo from "../obsidian-todo"
 // need task events
 import type { TasksEvents } from '../TasksEvents';
-import { getSettings } from './Config/Settings';
 import { ToDoLocation } from 'src/todo_location';
 
 export enum State {
