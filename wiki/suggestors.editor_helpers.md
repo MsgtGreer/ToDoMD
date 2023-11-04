@@ -34,7 +34,7 @@
 
 #### Defined in
 
-[src/suggestors/editor_helpers.ts:16](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/editor_helpers.ts#L16)
+[src/suggestors/editor_helpers.ts:16](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/editor_helpers.ts#L16)
 
 ___
 
@@ -54,7 +54,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/editor_helpers.ts:20](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/editor_helpers.ts#L20)
+[src/suggestors/editor_helpers.ts:20](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/editor_helpers.ts#L20)
 
 ___
 
@@ -75,7 +75,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/editor_helpers.ts:10](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/editor_helpers.ts#L10)
+[src/suggestors/editor_helpers.ts:10](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/editor_helpers.ts#L10)
 
 ___
 
@@ -96,7 +96,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/editor_helpers.ts:58](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/editor_helpers.ts#L58)
+[src/suggestors/editor_helpers.ts:58](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/editor_helpers.ts#L58)
 
 ___
 
@@ -124,7 +124,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/editor_helpers.ts:28](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/editor_helpers.ts#L28)
+[src/suggestors/editor_helpers.ts:28](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/editor_helpers.ts#L28)
 
 ___
 
@@ -145,7 +145,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/editor_helpers.ts:24](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/editor_helpers.ts#L24)
+[src/suggestors/editor_helpers.ts:24](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/editor_helpers.ts#L24)
 
 ___
 
@@ -166,4 +166,4 @@ ___
 
 #### Defined in
 
-[src/suggestors/editor_helpers.ts:5](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/editor_helpers.ts#L5)
+[src/suggestors/editor_helpers.ts:5](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/editor_helpers.ts#L5)

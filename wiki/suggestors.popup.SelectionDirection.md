@@ -18,7 +18,7 @@
 
 #### Defined in
 
-[src/suggestors/popup.ts:190](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/popup.ts#L190)
+[src/suggestors/popup.ts:190](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/popup.ts#L190)
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/popup.ts:192](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/popup.ts#L192)
+[src/suggestors/popup.ts:192](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/popup.ts#L192)
 
 ___
 
@@ -38,4 +38,4 @@ ___
 
 #### Defined in
 
-[src/suggestors/popup.ts:191](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/popup.ts#L191)
+[src/suggestors/popup.ts:191](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/popup.ts#L191)

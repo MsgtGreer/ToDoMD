@@ -28,7 +28,7 @@
 
 ### constructor
 
-• **new ToDoMDSettingsTab**(`app`, `plugin`)
+• **new ToDoMDSettingsTab**(`app`, `plugin`): [`ToDoMDSettingsTab`](../wiki/settings.settings_tab.ToDoMDSettingsTab)
 
 #### Parameters
 
@@ -37,13 +37,17 @@
 | `app` | `App` |
 | `plugin` | [`ToDoMDPlugin`](../wiki/main.ToDoMDPlugin) |
 
+#### Returns
+
+[`ToDoMDSettingsTab`](../wiki/settings.settings_tab.ToDoMDSettingsTab)
+
 #### Overrides
 
 PluginSettingTab.constructor
 
 #### Defined in
 
-src/settings/settings_tab.ts:10
+[src/settings/settings_tab.ts:10](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings_tab.ts#L10)
 
 ## Properties
 
@@ -53,7 +57,7 @@ src/settings/settings_tab.ts:10
 
 #### Defined in
 
-src/settings/settings_tab.ts:8
+[src/settings/settings_tab.ts:8](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings_tab.ts#L8)
 
 ___
 
@@ -63,13 +67,13 @@ ___
 
 #### Defined in
 
-src/settings/settings_tab.ts:7
+[src/settings/settings_tab.ts:7](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings_tab.ts#L7)
 
 ## Methods
 
 ### createEnabledSetting
 
-▸ `Private` **createEnabledSetting**(`propertyName`, `desc`, `container`): `void`
+▸ **createEnabledSetting**(`propertyName`, `desc`, `container`): `void`
 
 #### Parameters
 
@@ -85,7 +89,7 @@ src/settings/settings_tab.ts:7
 
 #### Defined in
 
-src/settings/settings_tab.ts:49
+[src/settings/settings_tab.ts:49](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings_tab.ts#L49)
 
 ___
 
@@ -103,4 +107,4 @@ PluginSettingTab.display
 
 #### Defined in
 
-src/settings/settings_tab.ts:15
+[src/settings/settings_tab.ts:15](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings_tab.ts#L15)

@@ -20,7 +20,7 @@
 
 #### Defined in
 
-[src/suggestors/provider.ts:54](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/provider.ts#L54)
+[src/suggestors/provider.ts:54](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/provider.ts#L54)
 
 ## Methods
 
@@ -41,4 +41,4 @@
 
 #### Defined in
 
-[src/suggestors/provider.ts:56](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/provider.ts#L56)
+[src/suggestors/provider.ts:56](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/provider.ts#L56)

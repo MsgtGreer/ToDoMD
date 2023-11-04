@@ -22,4 +22,4 @@
 
 #### Defined in
 
-[src/suggestors/provider.ts:50](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/provider.ts#L50)
+[src/suggestors/provider.ts:50](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/provider.ts#L50)

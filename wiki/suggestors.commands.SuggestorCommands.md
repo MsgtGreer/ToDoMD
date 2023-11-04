@@ -20,7 +20,7 @@
 
 ### constructor
 
-• **new SuggestorCommands**(`«destructured»`)
+• **new SuggestorCommands**(`«destructured»`): [`SuggestorCommands`](../wiki/suggestors.commands.SuggestorCommands)
 
 #### Parameters
 
@@ -29,9 +29,13 @@
 | `«destructured»` | `Object` |
 | › `plugin` | [`ToDoMDPlugin`](../wiki/main.ToDoMDPlugin) |
 
+#### Returns
+
+[`SuggestorCommands`](../wiki/suggestors.commands.SuggestorCommands)
+
 #### Defined in
 
-[src/suggestors/commands.ts:12](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/commands.ts#L12)
+[src/suggestors/commands.ts:12](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/commands.ts#L12)
 
 ## Properties
 
@@ -41,13 +45,13 @@
 
 #### Defined in
 
-[src/suggestors/commands.ts:6](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/commands.ts#L6)
+[src/suggestors/commands.ts:6](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/commands.ts#L6)
 
 ## Accessors
 
 ### app
 
-• `Private` `get` **app**(): `App`
+• `get` **app**(): `App`
 
 #### Returns
 
@@ -55,4 +59,4 @@
 
 #### Defined in
 
-[src/suggestors/commands.ts:8](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/commands.ts#L8)
+[src/suggestors/commands.ts:8](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/commands.ts#L8)

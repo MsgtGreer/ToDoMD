@@ -24,7 +24,7 @@
 
 ### constructor
 
-• **new obsidian_ToDo_Events**(`«destructured»`)
+• **new obsidian_ToDo_Events**(`«destructured»`): [`obsidian_ToDo_Events`](../wiki/events.obsidian_ToDo_Events.obsidian_ToDo_Events)
 
 #### Parameters
 
@@ -33,9 +33,13 @@
 | `«destructured»` | `Object` |
 | › `obsidianEvents` | `Events` |
 
+#### Returns
+
+[`obsidian_ToDo_Events`](../wiki/events.obsidian_ToDo_Events.obsidian_ToDo_Events)
+
 #### Defined in
 
-src/events/obsidian_ToDo_Events.ts:22
+[src/events/obsidian_ToDo_Events.ts:22](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/events/obsidian_ToDo_Events.ts#L22)
 
 ## Properties
 
@@ -45,7 +49,7 @@ src/events/obsidian_ToDo_Events.ts:22
 
 #### Defined in
 
-src/events/obsidian_ToDo_Events.ts:20
+[src/events/obsidian_ToDo_Events.ts:20](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/events/obsidian_ToDo_Events.ts#L20)
 
 ## Methods
 
@@ -65,7 +69,7 @@ src/events/obsidian_ToDo_Events.ts:20
 
 #### Defined in
 
-src/events/obsidian_ToDo_Events.ts:42
+[src/events/obsidian_ToDo_Events.ts:42](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/events/obsidian_ToDo_Events.ts#L42)
 
 ___
 
@@ -85,7 +89,7 @@ ___
 
 #### Defined in
 
-src/events/obsidian_ToDo_Events.ts:26
+[src/events/obsidian_ToDo_Events.ts:26](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/events/obsidian_ToDo_Events.ts#L26)
 
 ___
 
@@ -105,7 +109,7 @@ ___
 
 #### Defined in
 
-src/events/obsidian_ToDo_Events.ts:34
+[src/events/obsidian_ToDo_Events.ts:34](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/events/obsidian_ToDo_Events.ts#L34)
 
 ___
 
@@ -125,7 +129,7 @@ ___
 
 #### Defined in
 
-src/events/obsidian_ToDo_Events.ts:30
+[src/events/obsidian_ToDo_Events.ts:30](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/events/obsidian_ToDo_Events.ts#L30)
 
 ___
 
@@ -145,4 +149,4 @@ ___
 
 #### Defined in
 
-src/events/obsidian_ToDo_Events.ts:38
+[src/events/obsidian_ToDo_Events.ts:38](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/events/obsidian_ToDo_Events.ts#L38)

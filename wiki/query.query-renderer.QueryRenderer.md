@@ -22,7 +22,7 @@
 
 ### constructor
 
-• **new QueryRenderer**(`«destructured»`)
+• **new QueryRenderer**(`«destructured»`): [`QueryRenderer`](../wiki/query.query-renderer.QueryRenderer)
 
 #### Parameters
 
@@ -32,9 +32,13 @@
 | › `events` | [`obsidian_ToDo_Events`](../wiki/events.obsidian_ToDo_Events.obsidian_ToDo_Events) |
 | › `plugin` | `Plugin` |
 
+#### Returns
+
+[`QueryRenderer`](../wiki/query.query-renderer.QueryRenderer)
+
 #### Defined in
 
-[src/query/query-renderer.ts:13](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/query/query-renderer.ts#L13)
+[src/query/query-renderer.ts:13](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/query/query-renderer.ts#L13)
 
 ## Properties
 
@@ -44,7 +48,7 @@
 
 #### Defined in
 
-[src/query/query-renderer.ts:19](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/query/query-renderer.ts#L19)
+[src/query/query-renderer.ts:19](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/query/query-renderer.ts#L19)
 
 ___
 
@@ -54,7 +58,7 @@ ___
 
 #### Defined in
 
-[src/query/query-renderer.ts:10](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/query/query-renderer.ts#L10)
+[src/query/query-renderer.ts:10](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/query/query-renderer.ts#L10)
 
 ___
 
@@ -64,13 +68,13 @@ ___
 
 #### Defined in
 
-[src/query/query-renderer.ts:11](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/query/query-renderer.ts#L11)
+[src/query/query-renderer.ts:11](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/query/query-renderer.ts#L11)
 
 ## Methods
 
 ### \_addQueryRenderChild
 
-▸ `Private` **_addQueryRenderChild**(`source`, `element`, `context`): `Promise`<`void`\>
+▸ **_addQueryRenderChild**(`source`, `element`, `context`): `Promise`\<`void`\>
 
 #### Parameters
 
@@ -82,8 +86,8 @@ ___
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Defined in
 
-[src/query/query-renderer.ts:21](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/query/query-renderer.ts#L21)
+[src/query/query-renderer.ts:21](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/query/query-renderer.ts#L21)

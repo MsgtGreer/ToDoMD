@@ -27,7 +27,7 @@
 
 #### Defined in
 
-src/settings/settings.ts:38
+[src/settings/settings.ts:38](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings.ts#L38)
 
 ## Functions
 
@@ -48,4 +48,4 @@ src/settings/settings.ts:38
 
 #### Defined in
 
-src/settings/settings.ts:62
+[src/settings/settings.ts:62](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings.ts#L62)

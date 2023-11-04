@@ -36,7 +36,7 @@ implements a todo as used by obsidian for the various operations.
 
 ### constructor
 
-• **new obsidian_ToDo**(`toDo`, `location?`)
+• **new obsidian_ToDo**(`toDo`, `location?`): [`obsidian_ToDo`](../wiki/todos.obsidian-todo.obsidian_ToDo)
 
 #### Parameters
 
@@ -45,9 +45,13 @@ implements a todo as used by obsidian for the various operations.
 | `toDo` | [`ToDoMD`](../wiki/todos.todo.ToDoMD) |
 | `location?` | [`ToDoLocation`](../wiki/todos.todo_location.ToDoLocation) |
 
+#### Returns
+
+[`obsidian_ToDo`](../wiki/todos.obsidian-todo.obsidian_ToDo)
+
 #### Defined in
 
-src/todos/obsidian-todo.ts:11
+[src/todos/obsidian-todo.ts:11](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/obsidian-todo.ts#L11)
 
 ## Properties
 
@@ -57,7 +61,7 @@ src/todos/obsidian-todo.ts:11
 
 #### Defined in
 
-src/todos/obsidian-todo.ts:9
+[src/todos/obsidian-todo.ts:9](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/obsidian-todo.ts#L9)
 
 ___
 
@@ -67,7 +71,7 @@ ___
 
 #### Defined in
 
-src/todos/obsidian-todo.ts:8
+[src/todos/obsidian-todo.ts:8](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/obsidian-todo.ts#L8)
 
 ## Accessors
 
@@ -81,7 +85,7 @@ src/todos/obsidian-todo.ts:8
 
 #### Defined in
 
-src/todos/obsidian-todo.ts:155
+[src/todos/obsidian-todo.ts:155](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/obsidian-todo.ts#L155)
 
 ___
 
@@ -95,7 +99,7 @@ ___
 
 #### Defined in
 
-src/todos/obsidian-todo.ts:152
+[src/todos/obsidian-todo.ts:152](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/obsidian-todo.ts#L152)
 
 ## Methods
 
@@ -120,7 +124,7 @@ boolean indicating sameness
 
 #### Defined in
 
-src/todos/obsidian-todo.ts:149
+[src/todos/obsidian-todo.ts:149](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/obsidian-todo.ts#L149)
 
 ___
 
@@ -142,13 +146,13 @@ missingToDoAttributes and maps its output to the corresponding keys.
 
 #### Defined in
 
-src/todos/obsidian-todo.ts:126
+[src/todos/obsidian-todo.ts:126](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/obsidian-todo.ts#L126)
 
 ___
 
 ### missingToDoAttributes
 
-▸ `Private` **missingToDoAttributes**(): `string`[]
+▸ **missingToDoAttributes**(): `string`[]
 
 Interface to call the
 
@@ -165,13 +169,13 @@ the ToDoMD property of this class.
 
 #### Defined in
 
-src/todos/obsidian-todo.ts:118
+[src/todos/obsidian-todo.ts:118](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/obsidian-todo.ts#L118)
 
 ___
 
 ### fromLine
 
-▸ `Static` **fromLine**(`line`, `location?`): [`obsidian_ToDo`](../wiki/todos.obsidian-todo.obsidian_ToDo)
+▸ **fromLine**(`line`, `location?`): [`obsidian_ToDo`](../wiki/todos.obsidian-todo.obsidian_ToDo)
 
 Takes a line of code and creates a
 
@@ -188,13 +192,13 @@ Takes a line of code and creates a
 
 #### Defined in
 
-src/todos/obsidian-todo.ts:21
+[src/todos/obsidian-todo.ts:21](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/obsidian-todo.ts#L21)
 
 ___
 
 ### getStatus
 
-▸ `Static` **getStatus**(`input`): `string`
+▸ **getStatus**(`input`): `string`
 
 Matches the '- [ ]' in a todoline and returns the character within the square brackets, which is the todos status
 
@@ -212,13 +216,13 @@ status
 
 #### Defined in
 
-src/todos/obsidian-todo.ts:45
+[src/todos/obsidian-todo.ts:45](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/obsidian-todo.ts#L45)
 
 ___
 
 ### isToDo
 
-▸ `Static` **isToDo**(`line`): `boolean`
+▸ **isToDo**(`line`): `boolean`
 
 Matches the '- [ ]' that precedes any todo and returns a boolea, whether the line is a todo.
 
@@ -236,13 +240,13 @@ is
 
 #### Defined in
 
-src/todos/obsidian-todo.ts:37
+[src/todos/obsidian-todo.ts:37](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/obsidian-todo.ts#L37)
 
 ___
 
 ### splitIntoAttributes
 
-▸ `Static` **splitIntoAttributes**(`line`): `Record`<`string`, `string`\>
+▸ **splitIntoAttributes**(`line`): `Record`\<`string`, `string`\>
 
 Takes the line of a todo, thats everything after the - [ ] and splits it up into the fields of a
 
@@ -254,19 +258,19 @@ Takes the line of a todo, thats everything after the - [ ] and splits it up into
 
 #### Returns
 
-`Record`<`string`, `string`\>
+`Record`\<`string`, `string`\>
 
 Dictionary of attributes and values.
 
 #### Defined in
 
-src/todos/obsidian-todo.ts:56
+[src/todos/obsidian-todo.ts:56](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/obsidian-todo.ts#L56)
 
 ___
 
 ### toDoListsIdentical
 
-▸ `Static` **toDoListsIdentical**(`oldToDos`, `newToDos`): `boolean`
+▸ **toDoListsIdentical**(`oldToDos`, `newToDos`): `boolean`
 
 Matches two lists of todos by comparing the todos using
 
@@ -287,4 +291,4 @@ identicalTo
 
 #### Defined in
 
-src/todos/obsidian-todo.ts:137
+[src/todos/obsidian-todo.ts:137](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/obsidian-todo.ts#L137)

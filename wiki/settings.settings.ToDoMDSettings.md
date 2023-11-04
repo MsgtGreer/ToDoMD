@@ -36,7 +36,7 @@
 
 #### Defined in
 
-src/settings/settings.ts:27
+[src/settings/settings.ts:27](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings.ts#L27)
 
 ___
 
@@ -46,7 +46,7 @@ ___
 
 #### Defined in
 
-src/settings/settings.ts:17
+[src/settings/settings.ts:17](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings.ts#L17)
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 #### Defined in
 
-src/settings/settings.ts:18
+[src/settings/settings.ts:18](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings.ts#L18)
 
 ___
 
@@ -66,7 +66,7 @@ ___
 
 #### Defined in
 
-src/settings/settings.ts:34
+[src/settings/settings.ts:34](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings.ts#L34)
 
 ___
 
@@ -76,7 +76,7 @@ ___
 
 #### Defined in
 
-src/settings/settings.ts:35
+[src/settings/settings.ts:35](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings.ts#L35)
 
 ___
 
@@ -86,7 +86,7 @@ ___
 
 #### Defined in
 
-src/settings/settings.ts:15
+[src/settings/settings.ts:15](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings.ts#L15)
 
 ___
 
@@ -96,7 +96,7 @@ ___
 
 #### Defined in
 
-src/settings/settings.ts:28
+[src/settings/settings.ts:28](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings.ts#L28)
 
 ___
 
@@ -106,7 +106,7 @@ ___
 
 #### Defined in
 
-src/settings/settings.ts:29
+[src/settings/settings.ts:29](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings.ts#L29)
 
 ___
 
@@ -116,7 +116,7 @@ ___
 
 #### Defined in
 
-src/settings/settings.ts:33
+[src/settings/settings.ts:33](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings.ts#L33)
 
 ___
 
@@ -126,7 +126,7 @@ ___
 
 #### Defined in
 
-src/settings/settings.ts:31
+[src/settings/settings.ts:31](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings.ts#L31)
 
 ___
 
@@ -136,7 +136,7 @@ ___
 
 #### Defined in
 
-src/settings/settings.ts:32
+[src/settings/settings.ts:32](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings.ts#L32)
 
 ___
 
@@ -146,7 +146,7 @@ ___
 
 #### Defined in
 
-src/settings/settings.ts:22
+[src/settings/settings.ts:22](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings.ts#L22)
 
 ___
 
@@ -156,7 +156,7 @@ ___
 
 #### Defined in
 
-src/settings/settings.ts:26
+[src/settings/settings.ts:26](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings.ts#L26)
 
 ___
 
@@ -166,7 +166,7 @@ ___
 
 #### Defined in
 
-src/settings/settings.ts:25
+[src/settings/settings.ts:25](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings.ts#L25)
 
 ___
 
@@ -176,7 +176,7 @@ ___
 
 #### Defined in
 
-src/settings/settings.ts:23
+[src/settings/settings.ts:23](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings.ts#L23)
 
 ___
 
@@ -186,7 +186,7 @@ ___
 
 #### Defined in
 
-src/settings/settings.ts:24
+[src/settings/settings.ts:24](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings.ts#L24)
 
 ___
 
@@ -196,7 +196,7 @@ ___
 
 #### Defined in
 
-src/settings/settings.ts:16
+[src/settings/settings.ts:16](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings.ts#L16)
 
 ___
 
@@ -206,7 +206,7 @@ ___
 
 #### Defined in
 
-src/settings/settings.ts:19
+[src/settings/settings.ts:19](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings.ts#L19)
 
 ___
 
@@ -216,7 +216,7 @@ ___
 
 #### Defined in
 
-src/settings/settings.ts:20
+[src/settings/settings.ts:20](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings.ts#L20)
 
 ___
 
@@ -226,7 +226,7 @@ ___
 
 #### Defined in
 
-src/settings/settings.ts:21
+[src/settings/settings.ts:21](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings.ts#L21)
 
 ___
 
@@ -236,4 +236,4 @@ ___
 
 #### Defined in
 
-src/settings/settings.ts:30
+[src/settings/settings.ts:30](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings.ts#L30)

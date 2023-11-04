@@ -40,7 +40,7 @@
 
 ### constructor
 
-• **new ToDoMD**(`attributes?`)
+• **new ToDoMD**(`attributes?`): [`ToDoMD`](../wiki/todos.todo.ToDoMD)
 
 The ToDo class can be constructed either in a blank state or with a string
 
@@ -48,11 +48,15 @@ The ToDo class can be constructed either in a blank state or with a string
 
 | Name | Type |
 | :------ | :------ |
-| `attributes?` | `Record`<`string`, `string`\> |
+| `attributes?` | `Record`\<`string`, `string`\> |
+
+#### Returns
+
+[`ToDoMD`](../wiki/todos.todo.ToDoMD)
 
 #### Defined in
 
-src/todos/todo.ts:82
+[src/todos/todo.ts:82](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L82)
 
 ## Properties
 
@@ -62,7 +66,7 @@ src/todos/todo.ts:82
 
 #### Defined in
 
-src/todos/todo.ts:68
+[src/todos/todo.ts:68](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L68)
 
 ___
 
@@ -72,7 +76,7 @@ ___
 
 #### Defined in
 
-src/todos/todo.ts:64
+[src/todos/todo.ts:64](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L64)
 
 ___
 
@@ -82,7 +86,7 @@ ___
 
 #### Defined in
 
-src/todos/todo.ts:62
+[src/todos/todo.ts:62](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L62)
 
 ___
 
@@ -92,7 +96,7 @@ ___
 
 #### Defined in
 
-src/todos/todo.ts:66
+[src/todos/todo.ts:66](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L66)
 
 ___
 
@@ -102,7 +106,7 @@ ___
 
 #### Defined in
 
-src/todos/todo.ts:59
+[src/todos/todo.ts:59](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L59)
 
 ___
 
@@ -112,7 +116,7 @@ ___
 
 #### Defined in
 
-src/todos/todo.ts:77
+[src/todos/todo.ts:77](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L77)
 
 ___
 
@@ -122,7 +126,7 @@ ___
 
 #### Defined in
 
-src/todos/todo.ts:63
+[src/todos/todo.ts:63](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L63)
 
 ___
 
@@ -132,7 +136,7 @@ ___
 
 #### Defined in
 
-src/todos/todo.ts:60
+[src/todos/todo.ts:60](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L60)
 
 ___
 
@@ -142,7 +146,7 @@ ___
 
 #### Defined in
 
-src/todos/todo.ts:58
+[src/todos/todo.ts:58](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L58)
 
 ___
 
@@ -152,7 +156,7 @@ ___
 
 #### Defined in
 
-src/todos/todo.ts:65
+[src/todos/todo.ts:65](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L65)
 
 ___
 
@@ -162,7 +166,7 @@ ___
 
 #### Defined in
 
-src/todos/todo.ts:61
+[src/todos/todo.ts:61](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L61)
 
 ## Methods
 
@@ -176,7 +180,7 @@ src/todos/todo.ts:61
 
 #### Defined in
 
-src/todos/todo.ts:131
+[src/todos/todo.ts:131](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L131)
 
 ___
 
@@ -190,7 +194,7 @@ ___
 
 #### Defined in
 
-src/todos/todo.ts:123
+[src/todos/todo.ts:123](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L123)
 
 ___
 
@@ -204,7 +208,7 @@ ___
 
 #### Defined in
 
-src/todos/todo.ts:139
+[src/todos/todo.ts:139](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L139)
 
 ___
 
@@ -218,7 +222,7 @@ ___
 
 #### Defined in
 
-src/todos/todo.ts:111
+[src/todos/todo.ts:111](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L111)
 
 ___
 
@@ -232,7 +236,7 @@ ___
 
 #### Defined in
 
-src/todos/todo.ts:119
+[src/todos/todo.ts:119](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L119)
 
 ___
 
@@ -246,7 +250,7 @@ ___
 
 #### Defined in
 
-src/todos/todo.ts:127
+[src/todos/todo.ts:127](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L127)
 
 ___
 
@@ -260,7 +264,7 @@ ___
 
 #### Defined in
 
-src/todos/todo.ts:115
+[src/todos/todo.ts:115](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L115)
 
 ___
 
@@ -274,7 +278,7 @@ ___
 
 #### Defined in
 
-src/todos/todo.ts:107
+[src/todos/todo.ts:107](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L107)
 
 ___
 
@@ -288,7 +292,7 @@ ___
 
 #### Defined in
 
-src/todos/todo.ts:135
+[src/todos/todo.ts:135](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L135)
 
 ___
 
@@ -308,7 +312,7 @@ ___
 
 #### Defined in
 
-src/todos/todo.ts:142
+[src/todos/todo.ts:142](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L142)
 
 ___
 
@@ -326,4 +330,4 @@ A list of Keys for empty ToDo attributes.
 
 #### Defined in
 
-src/todos/todo.ts:101
+[src/todos/todo.ts:101](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L101)

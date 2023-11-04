@@ -29,7 +29,7 @@
 
 ### constructor
 
-• **new BlockType**(`c`, `isMultiLine`, `otherType0?`)
+• **new BlockType**(`c`, `isMultiLine`, `otherType0?`): [`BlockType`](../wiki/suggestors.editor_helpers.BlockType)
 
 #### Parameters
 
@@ -39,9 +39,13 @@
 | `isMultiLine` | `boolean` | `undefined` |
 | `otherType0` | [`BlockType`](../wiki/suggestors.editor_helpers.BlockType) | `null` |
 
+#### Returns
+
+[`BlockType`](../wiki/suggestors.editor_helpers.BlockType)
+
 #### Defined in
 
-[src/suggestors/editor_helpers.ts:110](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/editor_helpers.ts#L110)
+[src/suggestors/editor_helpers.ts:110](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/editor_helpers.ts#L110)
 
 ## Properties
 
@@ -51,7 +55,7 @@
 
 #### Defined in
 
-[src/suggestors/editor_helpers.ts:110](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/editor_helpers.ts#L110)
+[src/suggestors/editor_helpers.ts:110](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/editor_helpers.ts#L110)
 
 ___
 
@@ -61,7 +65,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/editor_helpers.ts:110](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/editor_helpers.ts#L110)
+[src/suggestors/editor_helpers.ts:110](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/editor_helpers.ts#L110)
 
 ___
 
@@ -71,7 +75,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/editor_helpers.ts:110](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/editor_helpers.ts#L110)
+[src/suggestors/editor_helpers.ts:110](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/editor_helpers.ts#L110)
 
 ___
 
@@ -81,7 +85,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/editor_helpers.ts:100](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/editor_helpers.ts#L100)
+[src/suggestors/editor_helpers.ts:100](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/editor_helpers.ts#L100)
 
 ___
 
@@ -91,7 +95,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/editor_helpers.ts:101](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/editor_helpers.ts#L101)
+[src/suggestors/editor_helpers.ts:101](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/editor_helpers.ts#L101)
 
 ___
 
@@ -101,7 +105,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/editor_helpers.ts:98](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/editor_helpers.ts#L98)
+[src/suggestors/editor_helpers.ts:98](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/editor_helpers.ts#L98)
 
 ___
 
@@ -111,7 +115,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/editor_helpers.ts:99](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/editor_helpers.ts#L99)
+[src/suggestors/editor_helpers.ts:99](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/editor_helpers.ts#L99)
 
 ___
 
@@ -121,7 +125,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/editor_helpers.ts:108](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/editor_helpers.ts#L108)
+[src/suggestors/editor_helpers.ts:108](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/editor_helpers.ts#L108)
 
 ## Accessors
 
@@ -135,7 +139,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/editor_helpers.ts:117](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/editor_helpers.ts#L117)
+[src/suggestors/editor_helpers.ts:117](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/editor_helpers.ts#L117)
 
 ___
 
@@ -149,7 +153,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/editor_helpers.ts:113](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/editor_helpers.ts#L113)
+[src/suggestors/editor_helpers.ts:113](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/editor_helpers.ts#L113)
 
 ___
 
@@ -163,4 +167,4 @@ ___
 
 #### Defined in
 
-[src/suggestors/editor_helpers.ts:121](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/editor_helpers.ts#L121)
+[src/suggestors/editor_helpers.ts:121](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/editor_helpers.ts#L121)

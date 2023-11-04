@@ -1,6 +1,7 @@
 # ToDoMD
 
-This plugin provides a new kind of todo syntax.
+This plugin provides a new kind of todo syntax. For my view on this see [the Manifest](ToDoMD-Manifesto.md).
+
 It supports autocompletion for that syntax. More Features to be introduced over time, see section features.
 
 I am not an experienced JS or TS developer, I only picked up programming in those langauges a few weeks ago (September 2023).

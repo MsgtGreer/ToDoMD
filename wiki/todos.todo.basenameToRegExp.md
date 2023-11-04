@@ -23,7 +23,11 @@
 
 ### constructor
 
-• **new basenameToRegExp**()
+• **new basenameToRegExp**(): [`basenameToRegExp`](../wiki/todos.todo.basenameToRegExp)
+
+#### Returns
+
+[`basenameToRegExp`](../wiki/todos.todo.basenameToRegExp)
 
 ## Properties
 
@@ -33,7 +37,7 @@
 
 #### Defined in
 
-src/todos/todo.ts:44
+[src/todos/todo.ts:44](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L44)
 
 ___
 
@@ -43,7 +47,7 @@ ___
 
 #### Defined in
 
-src/todos/todo.ts:42
+[src/todos/todo.ts:42](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L42)
 
 ___
 
@@ -53,7 +57,7 @@ ___
 
 #### Defined in
 
-src/todos/todo.ts:46
+[src/todos/todo.ts:46](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L46)
 
 ___
 
@@ -63,7 +67,7 @@ ___
 
 #### Defined in
 
-src/todos/todo.ts:39
+[src/todos/todo.ts:39](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L39)
 
 ___
 
@@ -73,7 +77,7 @@ ___
 
 #### Defined in
 
-src/todos/todo.ts:43
+[src/todos/todo.ts:43](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L43)
 
 ___
 
@@ -83,7 +87,7 @@ ___
 
 #### Defined in
 
-src/todos/todo.ts:41
+[src/todos/todo.ts:41](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L41)
 
 ___
 
@@ -93,7 +97,7 @@ ___
 
 #### Defined in
 
-src/todos/todo.ts:45
+[src/todos/todo.ts:45](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L45)
 
 ___
 
@@ -103,4 +107,4 @@ ___
 
 #### Defined in
 
-src/todos/todo.ts:40
+[src/todos/todo.ts:40](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo.ts#L40)

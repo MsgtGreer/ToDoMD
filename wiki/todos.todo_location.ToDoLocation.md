@@ -36,7 +36,7 @@ in a markdown file is stored, so that testable algorithms can then be added here
 
 ### constructor
 
-• **new ToDoLocation**(`path`, `lineNumber`, `sectionStart`, `sectionIndex`, `precedingHeader`)
+• **new ToDoLocation**(`path`, `lineNumber`, `sectionStart`, `sectionIndex`, `precedingHeader`): [`ToDoLocation`](../wiki/todos.todo_location.ToDoLocation)
 
 #### Parameters
 
@@ -48,9 +48,13 @@ in a markdown file is stored, so that testable algorithms can then be added here
 | `sectionIndex` | `number` |
 | `precedingHeader` | `string` |
 
+#### Returns
+
+[`ToDoLocation`](../wiki/todos.todo_location.ToDoLocation)
+
 #### Defined in
 
-src/todos/todo_location.ts:12
+[src/todos/todo_location.ts:12](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo_location.ts#L12)
 
 ## Properties
 
@@ -60,7 +64,7 @@ src/todos/todo_location.ts:12
 
 #### Defined in
 
-src/todos/todo_location.ts:7
+[src/todos/todo_location.ts:7](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo_location.ts#L7)
 
 ___
 
@@ -70,7 +74,7 @@ ___
 
 #### Defined in
 
-src/todos/todo_location.ts:6
+[src/todos/todo_location.ts:6](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo_location.ts#L6)
 
 ___
 
@@ -80,7 +84,7 @@ ___
 
 #### Defined in
 
-src/todos/todo_location.ts:10
+[src/todos/todo_location.ts:10](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo_location.ts#L10)
 
 ___
 
@@ -90,7 +94,7 @@ ___
 
 #### Defined in
 
-src/todos/todo_location.ts:9
+[src/todos/todo_location.ts:9](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo_location.ts#L9)
 
 ___
 
@@ -100,7 +104,7 @@ ___
 
 #### Defined in
 
-src/todos/todo_location.ts:8
+[src/todos/todo_location.ts:8](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo_location.ts#L8)
 
 ## Accessors
 
@@ -114,7 +118,7 @@ src/todos/todo_location.ts:8
 
 #### Defined in
 
-src/todos/todo_location.ts:46
+[src/todos/todo_location.ts:46](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo_location.ts#L46)
 
 ___
 
@@ -128,7 +132,7 @@ ___
 
 #### Defined in
 
-src/todos/todo_location.ts:42
+[src/todos/todo_location.ts:42](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo_location.ts#L42)
 
 ___
 
@@ -142,7 +146,7 @@ ___
 
 #### Defined in
 
-src/todos/todo_location.ts:60
+[src/todos/todo_location.ts:60](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo_location.ts#L60)
 
 ___
 
@@ -158,7 +162,7 @@ The index of the nth ToDo in its section.
 
 #### Defined in
 
-src/todos/todo_location.ts:56
+[src/todos/todo_location.ts:56](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo_location.ts#L56)
 
 ___
 
@@ -174,7 +178,7 @@ Line number where the section starts that contains this todo.
 
 #### Defined in
 
-src/todos/todo_location.ts:51
+[src/todos/todo_location.ts:51](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo_location.ts#L51)
 
 ## Methods
 
@@ -196,13 +200,13 @@ Constructor, for when the file has been renamed, and all other data remains the 
 
 #### Defined in
 
-src/todos/todo_location.ts:38
+[src/todos/todo_location.ts:38](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo_location.ts#L38)
 
 ___
 
 ### fromUnknownPosition
 
-▸ `Static` **fromUnknownPosition**(`path`): [`ToDoLocation`](../wiki/todos.todo_location.ToDoLocation)
+▸ **fromUnknownPosition**(`path`): [`ToDoLocation`](../wiki/todos.todo_location.ToDoLocation)
 
 Constructor, for use when the ToDos's exact location in a file is either unknown, or not needed.
 
@@ -218,4 +222,4 @@ Constructor, for use when the ToDos's exact location in a file is either unknown
 
 #### Defined in
 
-src/todos/todo_location.ts:30
+[src/todos/todo_location.ts:30](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/todo_location.ts#L30)

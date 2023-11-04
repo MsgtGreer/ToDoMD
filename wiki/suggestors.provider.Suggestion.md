@@ -27,7 +27,7 @@
 
 ### constructor
 
-• **new Suggestion**(`displayName`, `replacement`, `overrideStart?`, `overrideEnd?`, `opts?`)
+• **new Suggestion**(`displayName`, `replacement`, `overrideStart?`, `overrideEnd?`, `opts?`): [`Suggestion`](../wiki/suggestors.provider.Suggestion)
 
 #### Parameters
 
@@ -41,9 +41,13 @@
 | `opts.color?` | `string` |
 | `opts.icon?` | `string` |
 
+#### Returns
+
+[`Suggestion`](../wiki/suggestors.provider.Suggestion)
+
 #### Defined in
 
-[src/suggestors/provider.ts:13](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/provider.ts#L13)
+[src/suggestors/provider.ts:13](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/provider.ts#L13)
 
 ## Properties
 
@@ -53,7 +57,7 @@
 
 #### Defined in
 
-[src/suggestors/provider.ts:11](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/provider.ts#L11)
+[src/suggestors/provider.ts:11](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/provider.ts#L11)
 
 ___
 
@@ -63,7 +67,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/provider.ts:6](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/provider.ts#L6)
+[src/suggestors/provider.ts:6](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/provider.ts#L6)
 
 ___
 
@@ -73,7 +77,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/provider.ts:10](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/provider.ts#L10)
+[src/suggestors/provider.ts:10](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/provider.ts#L10)
 
 ___
 
@@ -83,7 +87,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/provider.ts:9](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/provider.ts#L9)
+[src/suggestors/provider.ts:9](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/provider.ts#L9)
 
 ___
 
@@ -93,7 +97,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/provider.ts:8](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/provider.ts#L8)
+[src/suggestors/provider.ts:8](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/provider.ts#L8)
 
 ___
 
@@ -103,7 +107,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/provider.ts:7](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/provider.ts#L7)
+[src/suggestors/provider.ts:7](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/provider.ts#L7)
 
 ## Methods
 
@@ -115,7 +119,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `options` | `Partial`<[`Suggestion`](../wiki/suggestors.provider.Suggestion)\> |
+| `options` | `Partial`\<[`Suggestion`](../wiki/suggestors.provider.Suggestion)\> |
 
 #### Returns
 
@@ -123,7 +127,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/provider.ts:33](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/provider.ts#L33)
+[src/suggestors/provider.ts:33](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/provider.ts#L33)
 
 ___
 
@@ -143,13 +147,13 @@ ___
 
 #### Defined in
 
-[src/suggestors/provider.ts:29](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/provider.ts#L29)
+[src/suggestors/provider.ts:29](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/provider.ts#L29)
 
 ___
 
 ### fromString
 
-▸ `Static` **fromString**(`suggestion`, `overrideStart?`): [`Suggestion`](../wiki/suggestors.provider.Suggestion)
+▸ **fromString**(`suggestion`, `overrideStart?`): [`Suggestion`](../wiki/suggestors.provider.Suggestion)
 
 #### Parameters
 
@@ -164,4 +168,4 @@ ___
 
 #### Defined in
 
-[src/suggestors/provider.ts:25](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/provider.ts#L25)
+[src/suggestors/provider.ts:25](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/provider.ts#L25)

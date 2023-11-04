@@ -41,7 +41,7 @@
 
 ### constructor
 
-• **new Cache**(`«destructured»`)
+• **new Cache**(`«destructured»`): [`Cache`](../wiki/caching.Cache.Cache)
 
 #### Parameters
 
@@ -52,9 +52,13 @@
 | › `metadataCache` | `MetadataCache` |
 | › `vault` | `Vault` |
 
+#### Returns
+
+[`Cache`](../wiki/caching.Cache.Cache)
+
 #### Defined in
 
-[src/caching/Cache.ts:36](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/caching/Cache.ts#L36)
+[src/caching/Cache.ts:36](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/caching/Cache.ts#L36)
 
 ## Properties
 
@@ -64,7 +68,7 @@
 
 #### Defined in
 
-[src/caching/Cache.ts:24](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/caching/Cache.ts#L24)
+[src/caching/Cache.ts:24](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/caching/Cache.ts#L24)
 
 ___
 
@@ -74,7 +78,7 @@ ___
 
 #### Defined in
 
-[src/caching/Cache.ts:19](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/caching/Cache.ts#L19)
+[src/caching/Cache.ts:19](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/caching/Cache.ts#L19)
 
 ___
 
@@ -84,7 +88,7 @@ ___
 
 #### Defined in
 
-[src/caching/Cache.ts:20](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/caching/Cache.ts#L20)
+[src/caching/Cache.ts:20](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/caching/Cache.ts#L20)
 
 ___
 
@@ -101,7 +105,7 @@ as the metadata cache would still be empty.
 
 #### Defined in
 
-[src/caching/Cache.ts:34](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/caching/Cache.ts#L34)
+[src/caching/Cache.ts:34](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/caching/Cache.ts#L34)
 
 ___
 
@@ -111,7 +115,7 @@ ___
 
 #### Defined in
 
-[src/caching/Cache.ts:15](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/caching/Cache.ts#L15)
+[src/caching/Cache.ts:15](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/caching/Cache.ts#L15)
 
 ___
 
@@ -121,7 +125,7 @@ ___
 
 #### Defined in
 
-[src/caching/Cache.ts:16](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/caching/Cache.ts#L16)
+[src/caching/Cache.ts:16](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/caching/Cache.ts#L16)
 
 ___
 
@@ -131,7 +135,7 @@ ___
 
 #### Defined in
 
-[src/caching/Cache.ts:23](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/caching/Cache.ts#L23)
+[src/caching/Cache.ts:23](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/caching/Cache.ts#L23)
 
 ___
 
@@ -141,7 +145,7 @@ ___
 
 #### Defined in
 
-[src/caching/Cache.ts:22](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/caching/Cache.ts#L22)
+[src/caching/Cache.ts:22](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/caching/Cache.ts#L22)
 
 ___
 
@@ -151,7 +155,7 @@ ___
 
 #### Defined in
 
-[src/caching/Cache.ts:17](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/caching/Cache.ts#L17)
+[src/caching/Cache.ts:17](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/caching/Cache.ts#L17)
 
 ___
 
@@ -161,7 +165,7 @@ ___
 
 #### Defined in
 
-[src/caching/Cache.ts:18](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/caching/Cache.ts#L18)
+[src/caching/Cache.ts:18](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/caching/Cache.ts#L18)
 
 ## Methods
 
@@ -175,7 +179,7 @@ ___
 
 #### Defined in
 
-[src/caching/Cache.ts:75](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/caching/Cache.ts#L75)
+[src/caching/Cache.ts:75](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/caching/Cache.ts#L75)
 
 ___
 
@@ -189,13 +193,13 @@ ___
 
 #### Defined in
 
-[src/caching/Cache.ts:71](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/caching/Cache.ts#L71)
+[src/caching/Cache.ts:71](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/caching/Cache.ts#L71)
 
 ___
 
 ### getToDosFromFileContent
 
-▸ `Private` **getToDosFromFileContent**(`fileContent`, `listItems`, `fileCache`, `file`): [`obsidian_ToDo`](../wiki/todos.obsidian-todo.obsidian_ToDo)[]
+▸ **getToDosFromFileContent**(`fileContent`, `listItems`, `fileCache`, `file`): [`obsidian_ToDo`](../wiki/todos.obsidian-todo.obsidian_ToDo)[]
 
 #### Parameters
 
@@ -212,13 +216,13 @@ ___
 
 #### Defined in
 
-[src/caching/Cache.ts:216](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/caching/Cache.ts#L216)
+[src/caching/Cache.ts:216](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/caching/Cache.ts#L216)
 
 ___
 
 ### indexFile
 
-▸ `Private` **indexFile**(`file`): `Promise`<`void`\>
+▸ **indexFile**(`file`): `Promise`\<`void`\>
 
 #### Parameters
 
@@ -228,31 +232,31 @@ ___
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Defined in
 
-[src/caching/Cache.ts:177](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/caching/Cache.ts#L177)
+[src/caching/Cache.ts:177](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/caching/Cache.ts#L177)
 
 ___
 
 ### loadVault
 
-▸ `Private` **loadVault**(): `Promise`<`void`\>
+▸ **loadVault**(): `Promise`\<`void`\>
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Defined in
 
-[src/caching/Cache.ts:163](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/caching/Cache.ts#L163)
+[src/caching/Cache.ts:163](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/caching/Cache.ts#L163)
 
 ___
 
 ### notifySubscribers
 
-▸ `Private` **notifySubscribers**(): `void`
+▸ **notifySubscribers**(): `void`
 
 #### Returns
 
@@ -260,13 +264,13 @@ ___
 
 #### Defined in
 
-[src/caching/Cache.ts:79](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/caching/Cache.ts#L79)
+[src/caching/Cache.ts:79](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/caching/Cache.ts#L79)
 
 ___
 
 ### reportToDoParsingErrorToUser
 
-▸ `Private` **reportToDoParsingErrorToUser**(`e`, `file`, `listItem`, `line`): `void`
+▸ **reportToDoParsingErrorToUser**(`e`, `file`, `listItem`, `line`): `void`
 
 #### Parameters
 
@@ -283,13 +287,13 @@ ___
 
 #### Defined in
 
-[src/caching/Cache.ts:295](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/caching/Cache.ts#L295)
+[src/caching/Cache.ts:295](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/caching/Cache.ts#L295)
 
 ___
 
 ### subscribeToCache
 
-▸ `Private` **subscribeToCache**(): `void`
+▸ **subscribeToCache**(): `void`
 
 #### Returns
 
@@ -297,13 +301,13 @@ ___
 
 #### Defined in
 
-[src/caching/Cache.ts:86](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/caching/Cache.ts#L86)
+[src/caching/Cache.ts:86](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/caching/Cache.ts#L86)
 
 ___
 
 ### subscribeToEvents
 
-▸ `Private` **subscribeToEvents**(): `void`
+▸ **subscribeToEvents**(): `void`
 
 #### Returns
 
@@ -311,13 +315,13 @@ ___
 
 #### Defined in
 
-[src/caching/Cache.ts:156](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/caching/Cache.ts#L156)
+[src/caching/Cache.ts:156](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/caching/Cache.ts#L156)
 
 ___
 
 ### subscribeToVault
 
-▸ `Private` **subscribeToVault**(): `void`
+▸ **subscribeToVault**(): `void`
 
 #### Returns
 
@@ -325,7 +329,7 @@ ___
 
 #### Defined in
 
-[src/caching/Cache.ts:106](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/caching/Cache.ts#L106)
+[src/caching/Cache.ts:106](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/caching/Cache.ts#L106)
 
 ___
 
@@ -339,13 +343,13 @@ ___
 
 #### Defined in
 
-[src/caching/Cache.ts:57](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/caching/Cache.ts#L57)
+[src/caching/Cache.ts:57](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/caching/Cache.ts#L57)
 
 ___
 
 ### getPrecedingHeader
 
-▸ `Static` `Private` **getPrecedingHeader**(`lineNumberToDo`, `headings`): `string`
+▸ **getPrecedingHeader**(`lineNumberToDo`, `headings`): `string`
 
 #### Parameters
 
@@ -360,13 +364,13 @@ ___
 
 #### Defined in
 
-[src/caching/Cache.ts:330](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/caching/Cache.ts#L330)
+[src/caching/Cache.ts:330](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/caching/Cache.ts#L330)
 
 ___
 
 ### getSection
 
-▸ `Static` `Private` **getSection**(`lineNumberToDo`, `sections`): `SectionCache`
+▸ **getSection**(`lineNumberToDo`, `sections`): `SectionCache`
 
 #### Parameters
 
@@ -381,4 +385,4 @@ ___
 
 #### Defined in
 
-[src/caching/Cache.ts:316](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/caching/Cache.ts#L316)
+[src/caching/Cache.ts:316](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/caching/Cache.ts#L316)

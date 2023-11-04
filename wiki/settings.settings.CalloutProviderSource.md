@@ -17,7 +17,7 @@
 
 #### Defined in
 
-src/settings/settings.ts:11
+[src/settings/settings.ts:11](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings.ts#L11)
 
 ___
 
@@ -27,4 +27,4 @@ ___
 
 #### Defined in
 
-src/settings/settings.ts:10
+[src/settings/settings.ts:10](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings.ts#L10)

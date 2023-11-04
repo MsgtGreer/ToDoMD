@@ -38,7 +38,7 @@
 
 ### constructor
 
-• **new ToDoMDPlugin**(`app`, `manifest`)
+• **new ToDoMDPlugin**(`app`, `manifest`): [`ToDoMDPlugin`](../wiki/main.ToDoMDPlugin)
 
 #### Parameters
 
@@ -46,6 +46,10 @@
 | :------ | :------ |
 | `app` | `App` |
 | `manifest` | `PluginManifest` |
+
+#### Returns
+
+[`ToDoMDPlugin`](../wiki/main.ToDoMDPlugin)
 
 #### Inherited from
 
@@ -63,7 +67,7 @@ node_modules/obsidian/obsidian.d.ts:2890
 
 #### Defined in
 
-[src/main.ts:19](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/main.ts#L19)
+[src/main.ts:19](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/main.ts#L19)
 
 ___
 
@@ -73,7 +77,7 @@ ___
 
 #### Defined in
 
-[src/main.ts:21](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/main.ts#L21)
+[src/main.ts:21](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/main.ts#L21)
 
 ___
 
@@ -83,7 +87,7 @@ ___
 
 #### Defined in
 
-[src/main.ts:24](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/main.ts#L24)
+[src/main.ts:24](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/main.ts#L24)
 
 ___
 
@@ -93,7 +97,7 @@ ___
 
 #### Defined in
 
-[src/main.ts:17](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/main.ts#L17)
+[src/main.ts:17](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/main.ts#L17)
 
 ## Accessors
 
@@ -107,27 +111,27 @@ ___
 
 #### Defined in
 
-[src/main.ts:128](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/main.ts#L128)
+[src/main.ts:128](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/main.ts#L128)
 
 ## Methods
 
 ### loadSettings
 
-▸ **loadSettings**(): `Promise`<`void`\>
+▸ **loadSettings**(): `Promise`\<`void`\>
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Defined in
 
-[src/main.ts:123](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/main.ts#L123)
+[src/main.ts:123](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/main.ts#L123)
 
 ___
 
 ### onFileOpened
 
-▸ `Private` `Readonly` **onFileOpened**(`file`): `void`
+▸ **onFileOpened**(`file`): `void`
 
 #### Parameters
 
@@ -141,17 +145,17 @@ ___
 
 #### Defined in
 
-[src/main.ts:136](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/main.ts#L136)
+[src/main.ts:136](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/main.ts#L136)
 
 ___
 
 ### onload
 
-▸ **onload**(): `Promise`<`void`\>
+▸ **onload**(): `Promise`\<`void`\>
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Overrides
 
@@ -159,17 +163,17 @@ Plugin.onload
 
 #### Defined in
 
-[src/main.ts:26](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/main.ts#L26)
+[src/main.ts:26](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/main.ts#L26)
 
 ___
 
 ### onunload
 
-▸ **onunload**(): `Promise`<`void`\>
+▸ **onunload**(): `Promise`\<`void`\>
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Overrides
 
@@ -177,27 +181,27 @@ Plugin.onunload
 
 #### Defined in
 
-[src/main.ts:120](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/main.ts#L120)
+[src/main.ts:120](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/main.ts#L120)
 
 ___
 
 ### saveSettings
 
-▸ **saveSettings**(): `Promise`<`void`\>
+▸ **saveSettings**(): `Promise`\<`void`\>
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 #### Defined in
 
-[src/main.ts:132](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/main.ts#L132)
+[src/main.ts:132](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/main.ts#L132)
 
 ___
 
 ### setupCommands
 
-▸ `Private` **setupCommands**(): `void`
+▸ **setupCommands**(): `void`
 
 #### Returns
 
@@ -205,4 +209,4 @@ ___
 
 #### Defined in
 
-[src/main.ts:59](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/main.ts#L59)
+[src/main.ts:59](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/main.ts#L59)

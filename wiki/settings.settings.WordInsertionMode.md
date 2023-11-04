@@ -18,7 +18,7 @@
 
 #### Defined in
 
-src/settings/settings.ts:6
+[src/settings/settings.ts:6](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings.ts#L6)
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 #### Defined in
 
-src/settings/settings.ts:5
+[src/settings/settings.ts:5](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings.ts#L5)
 
 ___
 
@@ -38,4 +38,4 @@ ___
 
 #### Defined in
 
-src/settings/settings.ts:4
+[src/settings/settings.ts:4](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/settings/settings.ts#L4)

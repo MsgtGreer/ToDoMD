@@ -18,7 +18,7 @@
 
 #### Defined in
 
-[src/caching/Cache.ts:10](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/caching/Cache.ts#L10)
+[src/caching/Cache.ts:10](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/caching/Cache.ts#L10)
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 #### Defined in
 
-[src/caching/Cache.ts:11](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/caching/Cache.ts#L11)
+[src/caching/Cache.ts:11](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/caching/Cache.ts#L11)
 
 ___
 
@@ -38,4 +38,4 @@ ___
 
 #### Defined in
 
-[src/caching/Cache.ts:12](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/caching/Cache.ts#L12)
+[src/caching/Cache.ts:12](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/caching/Cache.ts#L12)

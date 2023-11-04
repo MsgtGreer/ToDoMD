@@ -4,7 +4,7 @@
 
 ## Hierarchy
 
-- `EditorSuggest`<[`Suggestion`](../wiki/suggestors.provider.Suggestion)\>
+- `EditorSuggest`\<[`Suggestion`](../wiki/suggestors.provider.Suggestion)\>
 
   ↳ **`SuggestionPopup`**
 
@@ -44,7 +44,7 @@
 
 ### constructor
 
-• **new SuggestionPopup**(`app`, `settings`)
+• **new SuggestionPopup**(`app`, `settings`): [`SuggestionPopup`](../wiki/suggestors.popup.SuggestionPopup)
 
 #### Parameters
 
@@ -53,13 +53,17 @@
 | `app` | `App` |
 | `settings` | [`ToDoMDSettings`](../wiki/settings.settings.ToDoMDSettings) |
 
+#### Returns
+
+[`SuggestionPopup`](../wiki/suggestors.popup.SuggestionPopup)
+
 #### Overrides
 
-EditorSuggest&lt;Suggestion\&gt;.constructor
+EditorSuggest\&lt;Suggestion\&gt;.constructor
 
 #### Defined in
 
-[src/suggestors/popup.ts:30](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/popup.ts#L30)
+[src/suggestors/popup.ts:30](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/popup.ts#L30)
 
 ## Properties
 
@@ -69,7 +73,7 @@ EditorSuggest&lt;Suggestion\&gt;.constructor
 
 #### Defined in
 
-[src/suggestors/popup.ts:24](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/popup.ts#L24)
+[src/suggestors/popup.ts:24](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/popup.ts#L24)
 
 ___
 
@@ -79,7 +83,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/popup.ts:25](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/popup.ts#L25)
+[src/suggestors/popup.ts:25](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/popup.ts#L25)
 
 ___
 
@@ -89,7 +93,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/popup.ts:26](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/popup.ts#L26)
+[src/suggestors/popup.ts:26](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/popup.ts#L26)
 
 ___
 
@@ -101,7 +105,7 @@ Hacky variable to prevent the suggestion window from immediately re-opening afte
 
 #### Defined in
 
-[src/suggestors/popup.ts:21](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/popup.ts#L21)
+[src/suggestors/popup.ts:21](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/popup.ts#L21)
 
 ___
 
@@ -111,7 +115,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/popup.ts:22](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/popup.ts#L22)
+[src/suggestors/popup.ts:22](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/popup.ts#L22)
 
 ___
 
@@ -121,7 +125,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/popup.ts:28](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/popup.ts#L28)
+[src/suggestors/popup.ts:28](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/popup.ts#L28)
 
 ## Methods
 
@@ -135,7 +139,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/popup.ts:163](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/popup.ts#L163)
+[src/suggestors/popup.ts:163](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/popup.ts#L163)
 
 ___
 
@@ -153,13 +157,13 @@ EditorSuggest.close
 
 #### Defined in
 
-[src/suggestors/popup.ts:51](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/popup.ts#L51)
+[src/suggestors/popup.ts:51](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/popup.ts#L51)
 
 ___
 
 ### getCharacterRegex
 
-▸ `Private` **getCharacterRegex**(): `RegExp`
+▸ **getCharacterRegex**(): `RegExp`
 
 #### Returns
 
@@ -167,7 +171,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/popup.ts:180](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/popup.ts#L180)
+[src/suggestors/popup.ts:180](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/popup.ts#L180)
 
 ___
 
@@ -181,13 +185,13 @@ ___
 
 #### Defined in
 
-[src/suggestors/popup.ts:158](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/popup.ts#L158)
+[src/suggestors/popup.ts:158](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/popup.ts#L158)
 
 ___
 
 ### getSuggestions
 
-▸ **getSuggestions**(`context`): [`Suggestion`](../wiki/suggestors.provider.Suggestion)[] \| `Promise`<[`Suggestion`](../wiki/suggestors.provider.Suggestion)[]\>
+▸ **getSuggestions**(`context`): [`Suggestion`](../wiki/suggestors.provider.Suggestion)[] \| `Promise`\<[`Suggestion`](../wiki/suggestors.provider.Suggestion)[]\>
 
 #### Parameters
 
@@ -197,7 +201,7 @@ ___
 
 #### Returns
 
-[`Suggestion`](../wiki/suggestors.provider.Suggestion)[] \| `Promise`<[`Suggestion`](../wiki/suggestors.provider.Suggestion)[]\>
+[`Suggestion`](../wiki/suggestors.provider.Suggestion)[] \| `Promise`\<[`Suggestion`](../wiki/suggestors.provider.Suggestion)[]\>
 
 #### Overrides
 
@@ -205,13 +209,13 @@ EditorSuggest.getSuggestions
 
 #### Defined in
 
-[src/suggestors/popup.ts:56](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/popup.ts#L56)
+[src/suggestors/popup.ts:56](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/popup.ts#L56)
 
 ___
 
 ### internalOnTrigger
 
-▸ `Private` **internalOnTrigger**(`editor`, `cursor`, `manualTrigger`): `EditorSuggestTriggerInfo`
+▸ **internalOnTrigger**(`editor`, `cursor`, `manualTrigger`): `EditorSuggestTriggerInfo`
 
 #### Parameters
 
@@ -227,7 +231,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/popup.ts:80](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/popup.ts#L80)
+[src/suggestors/popup.ts:80](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/popup.ts#L80)
 
 ___
 
@@ -241,7 +245,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/popup.ts:172](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/popup.ts#L172)
+[src/suggestors/popup.ts:172](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/popup.ts#L172)
 
 ___
 
@@ -255,7 +259,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/popup.ts:168](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/popup.ts#L168)
+[src/suggestors/popup.ts:168](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/popup.ts#L168)
 
 ___
 
@@ -281,7 +285,7 @@ EditorSuggest.onTrigger
 
 #### Defined in
 
-[src/suggestors/popup.ts:76](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/popup.ts#L76)
+[src/suggestors/popup.ts:76](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/popup.ts#L76)
 
 ___
 
@@ -299,7 +303,7 @@ EditorSuggest.open
 
 #### Defined in
 
-[src/suggestors/popup.ts:40](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/popup.ts#L40)
+[src/suggestors/popup.ts:40](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/popup.ts#L40)
 
 ___
 
@@ -313,7 +317,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/popup.ts:176](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/popup.ts#L176)
+[src/suggestors/popup.ts:176](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/popup.ts#L176)
 
 ___
 
@@ -338,7 +342,7 @@ EditorSuggest.renderSuggestion
 
 #### Defined in
 
-[src/suggestors/popup.ts:108](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/popup.ts#L108)
+[src/suggestors/popup.ts:108](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/popup.ts#L108)
 
 ___
 
@@ -358,7 +362,7 @@ ___
 
 #### Defined in
 
-[src/suggestors/popup.ts:146](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/popup.ts#L146)
+[src/suggestors/popup.ts:146](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/popup.ts#L146)
 
 ___
 
@@ -383,4 +387,4 @@ EditorSuggest.selectSuggestion
 
 #### Defined in
 
-[src/suggestors/popup.ts:130](https://github.com/MsgtGreer/ToDoMD/blob/5bfc938/src/suggestors/popup.ts#L130)
+[src/suggestors/popup.ts:130](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/suggestors/popup.ts#L130)

@@ -19,7 +19,11 @@
 
 ### constructor
 
-• **new obsidian_ToDoRegexes**()
+• **new obsidian_ToDoRegexes**(): [`obsidian_ToDoRegexes`](../wiki/todos.obsidian-todo.obsidian_ToDoRegexes)
+
+#### Returns
+
+[`obsidian_ToDoRegexes`](../wiki/todos.obsidian-todo.obsidian_ToDoRegexes)
 
 ## Properties
 
@@ -29,7 +33,7 @@
 
 #### Defined in
 
-src/todos/obsidian-todo.ts:162
+[src/todos/obsidian-todo.ts:162](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/obsidian-todo.ts#L162)
 
 ___
 
@@ -39,7 +43,7 @@ ___
 
 #### Defined in
 
-src/todos/obsidian-todo.ts:161
+[src/todos/obsidian-todo.ts:161](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/obsidian-todo.ts#L161)
 
 ___
 
@@ -49,7 +53,7 @@ ___
 
 #### Defined in
 
-src/todos/obsidian-todo.ts:163
+[src/todos/obsidian-todo.ts:163](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/obsidian-todo.ts#L163)
 
 ___
 
@@ -59,4 +63,4 @@ ___
 
 #### Defined in
 
-src/todos/obsidian-todo.ts:164
+[src/todos/obsidian-todo.ts:164](https://github.com/MsgtGreer/ToDoMD/blob/c649f42/src/todos/obsidian-todo.ts#L164)
