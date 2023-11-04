@@ -1,6 +1,5 @@
 import type { App, Plugin } from 'obsidian';
-import SuggestionPopup, { SelectionDirection } from "./popup";
-import ToDoMD from 'src/todo';
+import { SelectionDirection } from "./popup";
 import ToDoMDPlugin from 'src/main';
 
 export class SuggestorCommands {

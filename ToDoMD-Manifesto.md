@@ -30,10 +30,10 @@ Your todos should support that, so we add importance to our todos.
 ++: very important, should not be failed under any circumstance
 +: important, you really should do it
  : not important, not unimportant, but doing it would be kinda nice. Great for if you have some time and dont want to work on the important things.
--: Not important at all. This are the tasks you do if you want to procrastinate really hard, or your todo list is otherwise empty. Not like that ever happened to someone.
+-: Not important at all. This are the todos you do if you want to procrastinate really hard, or your todo list is otherwise empty. Not like that ever happened to someone.
 
 # A responsible
-Normaly that would be you. But just sometimes, you might ask a collegue to do something for you, or a boss delegates your task to a co-worker. Better write that down, or it will soon be forgotten and things never get done.
+Normaly that would be you. But just sometimes, you might ask a collegue to do something for you, or a boss delegates your todo to a co-worker. Better write that down, or it will soon be forgotten and things never get done.
 
 # A description
 If the name does not suffice, you can add additional context here. Sometimes that is helpfull, sometimes its not.
@@ -43,14 +43,14 @@ Believe it or not, but sometimes your todos might depend on each other.You cant 
 Tracking these dependencies might be nice.
 
 # The context
-Everything has context. Here i want to add context to my todos, espacially context of where it has to be done. 
+Everything has context. Here i want to add context to my todos, espacially context of where it has to be done.
 @Lab contextualizes everything i want to do in the lab. So when i actually am in the lab, i can filter for @Lab and fidn all teh things i want todo there.
 
 # A Tag
 I use tags to contextualize my files within projects. I thing you should be able do the same with todos. Again, no preasure, you dont have to. But you can.
 
 # A due date
-Some of your tasks have to be done by a certain date, and if they have to be, better write that down.
+Some of your todos have to be done by a certain date, and if they have to be, better write that down.
 
 # What about urgency?
 You may have picked up erarlier, that importance and urgency give a phase space for todos, so why dont i have urgency in my todo? There is, its called a due date. If that is in 3 months, no worries, its not urgent. If it is tomorrow, you better hurry. Is it yesterday? You failed, i am sorry.

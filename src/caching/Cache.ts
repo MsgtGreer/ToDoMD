@@ -2,25 +2,21 @@ import { MetadataCache, Notice, TAbstractFile, TFile, Vault } from 'obsidian';
 import type { CachedMetadata, EventRef } from 'obsidian';
 import type { HeadingCache, ListItemCache, SectionCache } from 'obsidian';
 import { Mutex } from 'async-mutex';
-import obsidian_ToDo from "../obsidian-todo"
-// need task events
-import type { TasksEvents } from '../TasksEvents';
-import { ToDoLocation } from 'src/todo_location';
+import obsidian_ToDo from "../todos/obsidian-todo"
+import type { obsidian_ToDo_Events } from '../events/obsidian_ToDo_Events';
+import { ToDoLocation } from 'src/todos/todo_location';
 
 export enum State {
     Cold = 'Cold',
     Initializing = 'Initializing',
     Warm = 'Warm',
 }
-
-// const logger = logging.getLogger('tasks');
-
 export class Cache {
     private readonly metadataCache: MetadataCache;
     private readonly metadataCacheEventReferences: EventRef[];
     private readonly vault: Vault;
     private readonly vaultEventReferences: EventRef[];
-    private readonly events: TasksEvents;
+    private readonly events: obsidian_ToDo_Events;
     private readonly eventsEventReferences: EventRef[];
 
     private readonly toDosMutex: Mutex;
@@ -37,7 +33,7 @@ export class Cache {
      */
     private loadedAfterFirstResolve: boolean;
 
-    constructor({ metadataCache, vault, events }: { metadataCache: MetadataCache; vault: Vault; events: TasksEvents }) {
+    constructor({ metadataCache, vault, events }: { metadataCache: MetadataCache; vault: Vault; events: obsidian_ToDo_Events }) {
         this.metadataCache = metadataCache;
         this.metadataCacheEventReferences = [];
         this.vault = vault;
@@ -189,40 +185,21 @@ export class Cache {
         });
 
         const listItems = fileCache.listItems;
-        // When there is no list items cache, there are no tasks.
+        // When there is no list items cache, there are no todos.
         // Still continue to notify watchers of removal.
 
         let newToDos: obsidian_ToDo[] = [];
         if (listItems !== undefined) {
-            // Only read the file and process for tasks if there are list items.
+            // Only read the file and process for todos if there are list items.
             const fileContent = await this.vault.cachedRead(file);
             newToDos = this.getToDosFromFileContent(fileContent, listItems, fileCache, file);
         }
 
-        // If there are no changes in any of the tasks, there's
-        // nothing to do, so just return.
-
+        // If there are no changes in any of the todos, there's nothing to do, so just return.
         if (obsidian_ToDo.toDoListsIdentical(oldToDos, newToDos)) {
-            /* This code kept for now, to allow for debugging during development.
-            It is too verbose to release to users.
-            if (this.getState() == State.Warm) {
-                console.debug(`Tasks unchanged in ${file.path}`);
-            }
-            */
             return;
         }
-
-        // Temporary edit - See https://github.com/obsidian-tasks-group/obsidian-tasks/issues/2160
-        /*
-        if (this.getState() == State.Warm) {
-            // logger.debug(`Cache read: ${file.path}`);
-            console.debug(
-                `At least one task, its line number or its heading has changed in ${file.path}: triggering a refresh of all active Tasks blocks in Live Preview and Reading mode views.`,
-            );
-        }
-        */
-
-        // Remove all tasks from this file from the cache before
+        // Remove all todos from this file from the cache before
         // adding the ones that are currently in the file.
         // The filter keeps only taks that are not from this file
         //console.log("Updating Cache: ", this.ToDos);
@@ -246,7 +223,7 @@ export class Cache {
         const fileLines = fileContent.split('\n');
         const linesInFile = fileLines.length;
 
-        // We want to store section information with every task so
+        // We want to store section information with every todo so
         // that we can use that when we post process the markdown
         // rendered lists.
         let currentSection: SectionCache | null = null;
@@ -256,7 +233,7 @@ export class Cache {
                 const lineNumber = listItem.position.start.line;
                 if (lineNumber >= linesInFile) {
                     /*
-                        Obsidian CachedMetadata has told us that there is a task on lineNumber, but there are
+                        Obsidian CachedMetadata has told us that there is a todo on lineNumber, but there are
                         not that many lines in the file.
 
                         This was the underlying cause of all the 'Stuck on "Loading Tasks..."' messages,
@@ -272,14 +249,14 @@ export class Cache {
                     return toDos;
                 }
                 if (currentSection === null || currentSection.position.end.line < lineNumber) {
-                    // We went past the current section (or this is the first task).
-                    // Find the section that is relevant for this task and the following of the same section.
+                    // We went past the current section (or this is the first todo).
+                    // Find the section that is relevant for this todo and the following of the same section.
                     currentSection = Cache.getSection(lineNumber, fileCache.sections);
                     sectionIndex = 0;
                 }
 
                 if (currentSection === null) {
-                    // Cannot process a task without a section.
+                    // Cannot process a todo without a section.
                     continue;
                 }
 
@@ -315,23 +292,15 @@ export class Cache {
         return toDos;
     }
 
-    private reportToDoParsingErrorToUser(e: any, file: TFile, listItem: ListItemCache, line: string) {
-        const msg = `There was an error reading one of the tasks in this vault.
-The following task has been ignored, to prevent Tasks queries getting stuck with 'Loading Tasks ...'
+    private reportToDoParsingErrorToUser(e: unknown, file: TFile, listItem: ListItemCache, line: string) {
+        const msg = `There was an error reading one of the todos in this vault.
+The following todo has been ignored, to prevent obsidian-ToDo queries getting stuck with 'Loading Tasks ...'
 Error: ${e}
 File: ${file.path}
 Line number: ${listItem.position.start.line}
-Task line: ${line}
+ToDo line: ${line}
 
-Please create a bug report for this message at
-https://github.com/obsidian-tasks-group/obsidian-tasks/issues/new/choose
-to help us find and fix the underlying issue.
-
-Include:
-- either a screenshot of the error popup, or copy the text from the console, if on a desktop machine.
-- the output from running the Obsidian command 'Show debug info'
-
-The error popup will only be shown when Tasks is starting up, but if the error persists,
+The error popup will only be shown when obsidian-ToDo is starting up, but if the error persists,
 it will be shown in the console every time this file is edited during the Obsidian
 session.
 `;
@@ -344,13 +313,13 @@ session.
         }
     }
 
-    private static getSection(lineNumberTask: number, sections: SectionCache[] | undefined): SectionCache | null {
+    private static getSection(lineNumberToDo: number, sections: SectionCache[] | undefined): SectionCache | null {
         if (sections === undefined) {
             return null;
         }
 
         for (const section of sections) {
-            if (section.position.start.line <= lineNumberTask && section.position.end.line >= lineNumberTask) {
+            if (section.position.start.line <= lineNumberToDo && section.position.end.line >= lineNumberToDo) {
                 return section;
             }
         }
@@ -358,7 +327,7 @@ session.
         return null;
     }
 
-    private static getPrecedingHeader(lineNumberTask: number, headings: HeadingCache[] | undefined): string | null {
+    private static getPrecedingHeader(lineNumberToDo: number, headings: HeadingCache[] | undefined): string | null {
         if (headings === undefined) {
             return null;
         }
@@ -366,7 +335,7 @@ session.
         let precedingHeader: string | null = null;
 
         for (const heading of headings) {
-            if (heading.position.start.line > lineNumberTask) {
+            if (heading.position.start.line > lineNumberToDo) {
                 return precedingHeader;
             }
             precedingHeader = heading.heading;

@@ -1,15 +1,14 @@
 import { EditorPosition, KeymapContext, Plugin, TFile, } from "obsidian";
 
-import { ToDoMDSettings, DEFAULT_SETTINGS } from "./settings";
-import ToDoMDSettingsTab from "./settings_tab";
+import { ToDoMDSettings, DEFAULT_SETTINGS } from "./settings/settings";
+import ToDoMDSettingsTab from "./settings/settings_tab";
 import { EditorView, ViewUpdate } from "@codemirror/view";
-import SuggestionPopup, { SelectionDirection } from "./suggestors/popup";
-//import { markerStateField } from "./suggestors/marker_state_field";
+import SuggestionPopup from "./suggestors/popup";
 import { posFromIndex } from "./suggestors/editor_helpers";
 import { ToDo } from "./suggestors/todo_provider";
 import { SuggestorCommands } from "./suggestors/commands"
 
-import { TasksEvents } from './TasksEvents';
+import { obsidian_ToDo_Events } from './events/obsidian_ToDo_Events';
 import { Cache } from './caching/Cache';
 
 import { QueryRenderer } from "./query/query-renderer";
@@ -42,7 +41,7 @@ export default class ToDoMDPlugin extends Plugin {
         
         this.setupCommands();
 // Caching:
-        const events = new TasksEvents({ obsidianEvents: this.app.workspace });
+        const events = new obsidian_ToDo_Events({ obsidianEvents: this.app.workspace });
         this.cache = new Cache({
                     metadataCache: this.app.metadataCache,
                     vault: this.app.vault,

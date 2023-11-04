@@ -10,7 +10,7 @@ import {
     getIcon,
     TFile
 } from "obsidian";
-import { ToDoMDSettings } from "../settings";
+import { ToDoMDSettings } from "../settings/settings";
 import { matchWordBackwards } from "./editor_helpers";
 
 
@@ -87,7 +87,7 @@ export default class SuggestionPopup extends EditorSuggest<Suggestion> {
             this.close();
             return null;
         }
-        // if this line is a task, return the trigger info:
+        // if this line is a todo, return the trigger info:
          
         const {
             query,

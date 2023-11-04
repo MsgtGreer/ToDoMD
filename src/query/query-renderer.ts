@@ -1,16 +1,16 @@
 import { App,  MarkdownRenderChild, Plugin } from 'obsidian';
 import type { EventRef, MarkdownPostProcessorContext } from 'obsidian';
-import obsidian_ToDo from 'src/obsidian-todo';
+import obsidian_ToDo from 'src/todos/obsidian-todo';
 import { State } from '../caching/Cache';
-import { TasksEvents } from 'src/TasksEvents';
+import { obsidian_ToDo_Events } from 'src/events/obsidian_ToDo_Events';
 
 
 
 export class QueryRenderer {
     private readonly app: App;
-    private readonly events: TasksEvents;
+    private readonly events: obsidian_ToDo_Events;
 
-    constructor({ plugin, events }: { plugin: Plugin; events: TasksEvents }) {
+    constructor({ plugin, events }: { plugin: Plugin; events: obsidian_ToDo_Events }) {
         this.app = plugin.app;
         this.events = events;
 
@@ -33,7 +33,7 @@ export class QueryRenderer {
 
 class QueryRenderChild extends MarkdownRenderChild {
     private readonly app: App;
-    private readonly events: TasksEvents;
+    private readonly events: obsidian_ToDo_Events;
     private readonly source: string;    
     private queryType: string;
     /// The path of the file that contains the instruction block.
@@ -48,7 +48,7 @@ class QueryRenderChild extends MarkdownRenderChild {
         filePath,
     }: {
         app: App;
-        events: TasksEvents;
+        events: obsidian_ToDo_Events;
         container: HTMLElement;
         source: string;
         filePath: string;

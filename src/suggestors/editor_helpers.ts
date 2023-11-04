@@ -35,10 +35,8 @@ export function matchWordBackwards(
     let query = "", separatorChar = null;
     const line = editor.getLine(cursor.line);
     //console.log(line)
-    const taskRegex = /^\s*-\s\[[\s*x-]\]/;
-    if(taskRegex.test(line) && editor.getRange({ ...cursor, ch: cursor.ch-1 }, { ...cursor, ch: cursor.ch })===" "){
-        //new Notice('Found a task');
-        //console.log("Task Line found, current line: ",cursor.line," current cursorpos: ",cursor.ch, "Last sign was: ",editor.getRange({ ...cursor, ch: cursor.ch-1 }, { ...cursor, ch: cursor.ch }))
+    const todoRegex = /^\s*-\s\[[\s*x-]\]/;
+    if(todoRegex.test(line) && editor.getRange({ ...cursor, ch: cursor.ch-1 }, { ...cursor, ch: cursor.ch })===" "){
         query = line;
         separatorChar = " ";
         return { query, separatorChar};

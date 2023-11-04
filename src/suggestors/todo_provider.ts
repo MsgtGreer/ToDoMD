@@ -1,8 +1,8 @@
 import { Suggestion, SuggestionContext, SuggestionProvider } from "./provider";
-import { ToDoMDSettings, intoToDoMDPath } from "../settings";
+import { ToDoMDSettings, intoToDoMDPath } from "../settings/settings";
 import { Notice, Vault } from "obsidian";
-import ToDoMD, { basenameToKey, basenameToDescription } from "../todo"
-import obsidian_ToDo from "../obsidian-todo"
+import ToDoMD, { basenameToKey, basenameToDescription } from "../todos/todo"
+import obsidian_ToDo from "../todos/obsidian-todo"
 
 
 const TODO_ATTRIBUTES_PATH = "todo_attributes.json";
