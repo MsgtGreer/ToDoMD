@@ -17,7 +17,7 @@
     "@codemirror/view": "",
     "async-mutex": "",
     "builtin-modules": "^3.3.0",
-    "esbuild": "^0.19.5",
+    "esbuild": "^0.19.11",
     "obsidian": "^1.0.0",
     "typedoc": "^0.25.2",
     "typedoc-github-wiki-theme": "^1.1.0",
